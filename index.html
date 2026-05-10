@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Patent Intelligence Dashboard</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif; background: #f5f5f0; color: #1a1a1a; padding: 2rem; }
+h1 { font-size: 22px; font-weight: 500; margin-bottom: 0.25rem; }
+.subtitle { font-size: 13px; color: #888; margin-bottom: 2rem; }
+.metrics { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 1.5rem; }
+.metric { background: #fff; border-radius: 10px; padding: 16px 18px; border: 0.5px solid #e0e0d8; }
+.metric-label { font-size: 12px; color: #888; margin-bottom: 6px; }
+.metric-value { font-size: 24px; font-weight: 500; }
+.metric-sub { font-size: 12px; color: #aaa; margin-top: 2px; }
+.chart-card { background: #fff; border-radius: 12px; border: 0.5px solid #e0e0d8; padding: 1.25rem; margin-bottom: 1.25rem; }
+.chart-title { font-size: 14px; font-weight: 500; margin-bottom: 16px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem; }
+.tab-bar { display: flex; gap: 4px; margin-bottom: 16px; }
+.tab { font-size: 12px; padding: 5px 12px; border-radius: 8px; border: 0.5px solid #ddd; background: transparent; color: #666; cursor: pointer; }
+.tab.active { background: #f0f0ea; color: #1a1a1a; font-weight: 500; }
+.legend { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 10px; font-size: 12px; color: #666; }
+.legend span { display: flex; align-items: center; gap: 5px; }
+.legend-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+@media (max-width: 700px) { .metrics { grid-template-columns: 1fr 1fr; } .grid-2 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<h1>Global Patent Intelligence Dashboard</h1>
+<p class="subtitle">9.45 million patents &middot; 1976 &ndash; 2025 &middot; PatentsView data</p>
+
+<div class="metrics">
+  <div class="metric"><div class="metric-label">Total patents</div><div class="metric-value">9.45M</div><div class="metric-sub">1976 &ndash; 2025</div></div>
+  <div class="metric"><div class="metric-label">Unique inventors</div><div class="metric-value">4.29M</div><div class="metric-sub">disambiguated</div></div>
+  <div class="metric"><div class="metric-label">Companies</div><div class="metric-value">565K</div><div class="metric-sub">assignees</div></div>
+  <div class="metric"><div class="metric-label">Peak year</div><div class="metric-value">2025</div><div class="metric-sub">378,741 patents</div></div>
+</div>
+
+<div class="chart-card">
+  <div class="chart-title">Annual patent filings &amp; cumulative total (1976 &ndash; 2025)</div>
+  <div class="tab-bar">
+    <button class="tab active" onclick="showTrend('filed',this)">Annual filings</button>
+    <button class="tab" onclick="showTrend('cumul',this)">Cumulative</button>
+  </div>
+  <div style="position:relative;width:100%;height:260px;"><canvas id="trendChart"></canvas></div>
+</div>
+
+<div class="grid-2">
+  <div class="chart-card">
+    <div class="chart-title">Top 10 countries by inventor patents</div>
+    <div style="position:relative;width:100%;height:320px;"><canvas id="countryChart"></canvas></div>
+  </div>
+  <div class="chart-card">
+    <div class="chart-title">Patent type breakdown</div>
+    <div class="legend" id="typeLegend"></div>
+    <div style="position:relative;width:100%;height:260px;"><canvas id="typeChart"></canvas></div>
+  </div>
+</div>
+
+<div class="chart-card">
+  <div class="chart-title">Top 15 companies by patent count</div>
+  <div style="position:relative;width:100%;height:420px;"><canvas id="compChart"></canvas></div>
+</div>
+
+<div class="grid-2">
+  <div class="chart-card">
+    <div class="chart-title">Top 15 inventors globally</div>
+    <div style="position:relative;width:100%;height:420px;"><canvas id="invChart"></canvas></div>
+  </div>
+  <div class="chart-card">
+    <div class="chart-title">Dominant countries by decade</div>
+    <div style="position:relative;width:100%;height:420px;"><canvas id="decadeChart"></canvas></div>
+  </div>
+</div>
+
+<div class="chart-card">
+  <div class="chart-title">Patent type trends over time</div>
+  <div class="legend">
+    <span><span class="legend-dot" style="background:#378ADD"></span>Utility</span>
+    <span><span class="legend-dot" style="background:#D85A30"></span>Design</span>
+    <span><span class="legend-dot" style="background:#1D9E75"></span>Plant</span>
+    <span><span class="legend-dot" style="background:#BA7517"></span>Reissue</span>
+  </div>
+  <div style="position:relative;width:100%;height:280px;"><canvas id="techChart"></canvas></div>
+</div>
+
+<div class="chart-card">
+  <div class="chart-title">Average claims by patent type</div>
+  <div style="position:relative;width:100%;height:220px;"><canvas id="claimsChart"></canvas></div>
+</div>
+
+<script>
+const DATA = {"yearly": [{"year": 1976, "patents_filed": 70941, "cumulative_total": 70941.0}, {"year": 1977, "patents_filed": 69820, "cumulative_total": 140761.0}, {"year": 1978, "patents_filed": 70586, "cumulative_total": 211347.0}, {"year": 1979, "patents_filed": 52484, "cumulative_total": 263831.0}, {"year": 1980, "patents_filed": 66212, "cumulative_total": 330043.0}, {"year": 1981, "patents_filed": 71112, "cumulative_total": 401155.0}, {"year": 1982, "patents_filed": 63292, "cumulative_total": 464447.0}, {"year": 1983, "patents_filed": 62019, "cumulative_total": 526466.0}, {"year": 1984, "patents_filed": 72689, "cumulative_total": 599155.0}, {"year": 1985, "patents_filed": 77276, "cumulative_total": 676431.0}, {"year": 1986, "patents_filed": 77050, "cumulative_total": 753481.0}, {"year": 1987, "patents_filed": 89591, "cumulative_total": 843072.0}, {"year": 1988, "patents_filed": 84449, "cumulative_total": 927521.0}, {"year": 1989, "patents_filed": 102719, "cumulative_total": 1030240.0}, {"year": 1990, "patents_filed": 99275, "cumulative_total": 1129515.0}, {"year": 1991, "patents_filed": 106891, "cumulative_total": 1236406.0}, {"year": 1992, "patents_filed": 107540, "cumulative_total": 1343946.0}, {"year": 1993, "patents_filed": 109933, "cumulative_total": 1453879.0}, {"year": 1994, "patents_filed": 113723, "cumulative_total": 1567602.0}, {"year": 1995, "patents_filed": 113954, "cumulative_total": 1681556.0}, {"year": 1996, "patents_filed": 121811, "cumulative_total": 1803367.0}, {"year": 1997, "patents_filed": 124181, "cumulative_total": 1927548.0}, {"year": 1998, "patents_filed": 163265, "cumulative_total": 2090813.0}, {"year": 1999, "patents_filed": 169252, "cumulative_total": 2260065.0}, {"year": 2000, "patents_filed": 176192, "cumulative_total": 2436257.0}, {"year": 2001, "patents_filed": 184172, "cumulative_total": 2620429.0}, {"year": 2002, "patents_filed": 184494, "cumulative_total": 2804923.0}, {"year": 2003, "patents_filed": 187104, "cumulative_total": 2992027.0}, {"year": 2004, "patents_filed": 181413, "cumulative_total": 3173440.0}, {"year": 2005, "patents_filed": 157829, "cumulative_total": 3331269.0}, {"year": 2006, "patents_filed": 196489, "cumulative_total": 3527758.0}, {"year": 2007, "patents_filed": 182978, "cumulative_total": 3710736.0}, {"year": 2008, "patents_filed": 185260, "cumulative_total": 3895996.0}, {"year": 2009, "patents_filed": 192052, "cumulative_total": 4088048.0}, {"year": 2010, "patents_filed": 244599, "cumulative_total": 4332647.0}, {"year": 2011, "patents_filed": 248101, "cumulative_total": 4580748.0}, {"year": 2012, "patents_filed": 277285, "cumulative_total": 4858033.0}, {"year": 2013, "patents_filed": 303658, "cumulative_total": 5161691.0}, {"year": 2014, "patents_filed": 327014, "cumulative_total": 5488705.0}, {"year": 2015, "patents_filed": 326969, "cumulative_total": 5815674.0}, {"year": 2016, "patents_filed": 334674, "cumulative_total": 6150348.0}, {"year": 2017, "patents_filed": 352587, "cumulative_total": 6502935.0}, {"year": 2018, "patents_filed": 341104, "cumulative_total": 6844039.0}, {"year": 2019, "patents_filed": 392618, "cumulative_total": 7236657.0}, {"year": 2020, "patents_filed": 390572, "cumulative_total": 7627229.0}, {"year": 2021, "patents_filed": 363829, "cumulative_total": 7991058.0}, {"year": 2022, "patents_filed": 360417, "cumulative_total": 8351475.0}, {"year": 2023, "patents_filed": 350093, "cumulative_total": 8701568.0}, {"year": 2024, "patents_filed": 373852, "cumulative_total": 9075420.0}, {"year": 2025, "patents_filed": 378741, "cumulative_total": 9454161.0}], "countries": [{"country": "US", "patent_count": 104518, "pct_share": 45.77}, {"country": "JP", "patent_count": 28209, "pct_share": 12.35}, {"country": "DE", "patent_count": 13797, "pct_share": 6.04}, {"country": "KR", "patent_count": 11468, "pct_share": 5.02}, {"country": "CN", "patent_count": 10613, "pct_share": 4.65}, {"country": "NL", "patent_count": 8204, "pct_share": 3.59}, {"country": "GB", "patent_count": 6740, "pct_share": 2.95}, {"country": "TW", "patent_count": 6279, "pct_share": 2.75}, {"country": "CA", "patent_count": 5601, "pct_share": 2.45}, {"country": "FR", "patent_count": 5167, "pct_share": 2.26}, {"country": "IN", "patent_count": 3181, "pct_share": 1.39}, {"country": "IL", "patent_count": 3021, "pct_share": 1.32}, {"country": "AU", "patent_count": 2218, "pct_share": 0.97}, {"country": "IT", "patent_count": 2094, "pct_share": 0.92}, {"country": "CH", "patent_count": 2034, "pct_share": 0.89}, {"country": "SE", "patent_count": 1949, "pct_share": 0.85}, {"country": "DK", "patent_count": 1913, "pct_share": 0.84}, {"country": "BE", "patent_count": 1423, "pct_share": 0.62}, {"country": "FI", "patent_count": 1017, "pct_share": 0.45}, {"country": "AT", "patent_count": 1010, "pct_share": 0.44}, {"country": "SG", "patent_count": 877, "pct_share": 0.38}, {"country": "ES", "patent_count": 828, "pct_share": 0.36}, {"country": "NZ", "patent_count": 648, "pct_share": 0.28}, {"country": "IE", "patent_count": 588, "pct_share": 0.26}, {"country": "NO", "patent_count": 417, "pct_share": 0.18}, {"country": "RU", "patent_count": 392, "pct_share": 0.17}, {"country": "BR", "patent_count": 322, "pct_share": 0.14}, {"country": "SA", "patent_count": 296, "pct_share": 0.13}, {"country": "MX", "patent_count": 267, "pct_share": 0.12}, {"country": "CZ", "patent_count": 259, "pct_share": 0.11}], "inventors": [{"inventor_id": "fl:mo_ln:olesen-4", "inventor_name": "Mogens Nyegaard Olesen", "country": "DK", "patent_count": 701}, {"inventor_id": "fl:ha_ln:hansen-6", "inventor_name": "Hans A Hansen", "country": "US", "patent_count": 573}, {"inventor_id": "fl:co_ln:vandenberg-7", "inventor_name": "Cornelis P. VandenBerg", "country": "US", "patent_count": 434}, {"inventor_id": "fl:ni_ln:klemm-1", "inventor_name": "Nils Klemm", "country": "DE", "patent_count": 419}, {"inventor_id": "fl:ga_ln:zaiger-1", "inventor_name": "Gary Neil Zaiger", "country": "US", "patent_count": 395}, {"inventor_id": "fl:gr_ln:zaiger-1", "inventor_name": "Grant Gene Zaiger", "country": "US", "patent_count": 391}, {"inventor_id": "fl:le_ln:gardner-3", "inventor_name": "Leith Marie Gardner", "country": "US", "patent_count": 374}, {"inventor_id": "fl:to_ln:dummen-1", "inventor_name": "Tobias D\u00fcmmen", "country": "DE", "patent_count": 369}, {"inventor_id": "fl:sc_ln:trees-2", "inventor_name": "Scott C. Trees", "country": "US", "patent_count": 351}, {"inventor_id": "fl:we_ln:bergman-1", "inventor_name": "Wendy R. Bergman", "country": "US", "patent_count": 312}, {"inventor_id": "fl:lo_ln:bradford-3", "inventor_name": "Lowell Glen Bradford", "country": "US", "patent_count": 286}, {"inventor_id": "fl:al_ln:meilland-2", "inventor_name": "Alain A. Meilland", "country": "FR", "patent_count": 276}, {"inventor_id": "fl:ma_ln:smith-147", "inventor_name": "Mark A. Smith", "country": "CA", "patent_count": 274}, {"inventor_id": "fl:ma_ln:vanswieten-1", "inventor_name": "Martinus Nicolaas Gerardus Van Swieten", "country": "NL", "patent_count": 245}, {"inventor_id": "fl:ga_ln:danziger-1", "inventor_name": "Gavriel Danziger", "country": "IL", "patent_count": 211}, {"inventor_id": "fl:re_ln:holtkamp-1", "inventor_name": "Reinhold Holtkamp, Sr.", "country": "DE", "patent_count": 210}, {"inventor_id": "fl:mi_ln:hanes-1", "inventor_name": "Mitchell E. Hanes", "country": "US", "patent_count": 208}, {"inventor_id": "fl:ja_ln:egger-3", "inventor_name": "Janet N. Egger", "country": "US", "patent_count": 206}, {"inventor_id": "fl:ar_ln:koot-1", "inventor_name": "Arjan Koot", "country": "NL", "patent_count": 200}, {"inventor_id": "fl:ke_ln:zary-1", "inventor_name": "Keith W. Zary", "country": "US", "patent_count": 200}], "companies": [{"company_id": "29b8f534-149e-443c-b76b-3c4a222da89c", "company_name": "International Business Machines Corporation", "type": 2.0, "patent_count": 4748}, {"company_id": "533e0469-baac-46b7-9576-669db08092eb", "company_name": "SAMSUNG DISPLAY CO., LTD.", "type": 3.0, "patent_count": 4617}, {"company_id": "906da649-dd98-4eac-a78c-d5dc3cc385b1", "company_name": "LG ELECTRONICS INC.", "type": 3.0, "patent_count": 1640}, {"company_id": "dfdf1f1a-8f22-41dc-a7f0-855bde20ca67", "company_name": "CANON KABUSHIKI KAISHA", "type": 3.0, "patent_count": 1584}, {"company_id": "55715b8e-9037-47c9-8e27-a2acf13d6047", "company_name": "Intel Corporation", "type": 2.0, "patent_count": 1345}, {"company_id": "f03635c8-6b6c-4f2b-bb6c-b52678f56aae", "company_name": "QUALCOMM Incorporated", "type": 2.0, "patent_count": 1119}, {"company_id": "d530b05a-2539-4dbe-aa54-027b4ab9be0b", "company_name": "Microsoft Technology Licensing, LLC", "type": 2.0, "patent_count": 1100}, {"company_id": "55bc7465-2823-418d-9835-41d555c610a6", "company_name": "SONY GROUP CORPORATION", "type": 3.0, "patent_count": 1089}, {"company_id": "88c962da-6df3-4f86-85ba-14c24c3cb600", "company_name": "Taiwan Semiconductor Manufacturing Company, Ltd.", "type": 3.0, "patent_count": 1070}, {"company_id": "38cff6e0-fc52-4faf-9fa9-b72912600dee", "company_name": "Apple Inc.", "type": 2.0, "patent_count": 1049}, {"company_id": "87bbd77e-54e0-4d95-9c1b-7843963c09eb", "company_name": "TOYOTA JIDOSHA KABUSHIKI KAISHA", "type": 3.0, "patent_count": 997}, {"company_id": "a7c6a1f8-8ea9-4e47-8a97-26606969523c", "company_name": "Yoder Brother, Inc.", "type": 2.0, "patent_count": 995}, {"company_id": "048b2efe-1ff2-4857-9bbc-18422f0f1910", "company_name": "GOOGLE LLC", "type": 2.0, "patent_count": 989}, {"company_id": "ee19b405-e8a2-4bfe-8aa1-9f8fe50d3be7", "company_name": "Amazon Technologies, Inc.", "type": 2.0, "patent_count": 899}, {"company_id": "17db0f8d-78c8-443c-8a9d-e402df66def0", "company_name": "BOE Technology Group Co., Ltd.", "type": 3.0, "patent_count": 860}, {"company_id": "b904f566-62d6-44a5-8689-7b5c5a3a1a19", "company_name": "General Electric Company", "type": 2.0, "patent_count": 859}, {"company_id": "8a03b7d9-0444-4dfc-9737-bf029c47a462", "company_name": "FORD GLOBAL TECHNOLOGIES, LLC", "type": 2.0, "patent_count": 852}, {"company_id": "66e2c62e-301f-42e2-a6de-b62c87f792e5", "company_name": "HUAWEI TECHNOLOGIES CO., LTD.", "type": 3.0, "patent_count": 763}, {"company_id": "877b4262-7552-45e3-adc3-c484b3095cf3", "company_name": "SEIKO EPSON CORPORATION", "type": 3.0, "patent_count": 753}, {"company_id": "74c11be2-20ec-49fe-ac26-d839d375bd32", "company_name": "MITSUBISHI ELECTRIC CORPORATION", "type": 3.0, "patent_count": 728}], "types": [{"patent_type": "utility", "patent_count": 8531961, "pct_share": 90.25}, {"patent_type": "design", "patent_count": 864433, "pct_share": 9.14}, {"patent_type": "plant", "patent_count": 33141, "pct_share": 0.35}, {"patent_type": "reissue", "patent_count": 21855, "pct_share": 0.23}, {"patent_type": "statutory invention registration", "patent_count": 2259, "pct_share": 0.02}, {"patent_type": "defensive publication", "patent_count": 509, "pct_share": 0.01}, {"patent_type": "TVPP", "patent_count": 3, "pct_share": 0.0}], "decades": [{"decade": 1970, "rnk": 1, "country": "US", "patent_count": 1470}, {"decade": 1970, "rnk": 2, "country": "DE", "patent_count": 100}, {"decade": 1970, "rnk": 3, "country": "JP", "patent_count": 81}, {"decade": 1970, "rnk": 4, "country": "GB", "patent_count": 69}, {"decade": 1970, "rnk": 5, "country": "FR", "patent_count": 49}, {"decade": 1980, "rnk": 1, "country": "US", "patent_count": 4431}, {"decade": 1980, "rnk": 2, "country": "DE", "patent_count": 473}, {"decade": 1980, "rnk": 3, "country": "JP", "patent_count": 357}, {"decade": 1980, "rnk": 4, "country": "GB", "patent_count": 238}, {"decade": 1980, "rnk": 5, "country": "NL", "patent_count": 235}, {"decade": 1990, "rnk": 1, "country": "US", "patent_count": 5224}, {"decade": 1990, "rnk": 2, "country": "JP", "patent_count": 785}, {"decade": 1990, "rnk": 3, "country": "DE", "patent_count": 601}, {"decade": 1990, "rnk": 4, "country": "NL", "patent_count": 517}, {"decade": 1990, "rnk": 5, "country": "GB", "patent_count": 310}, {"decade": 2000, "rnk": 1, "country": "US", "patent_count": 6515}, {"decade": 2000, "rnk": 2, "country": "NL", "patent_count": 1839}, {"decade": 2000, "rnk": 3, "country": "JP", "patent_count": 1504}, {"decade": 2000, "rnk": 4, "country": "DE", "patent_count": 1356}, {"decade": 2000, "rnk": 5, "country": "GB", "patent_count": 611}, {"decade": 2010, "rnk": 1, "country": "US", "patent_count": 83030}, {"decade": 2010, "rnk": 2, "country": "JP", "patent_count": 24951}, {"decade": 2010, "rnk": 3, "country": "KR", "patent_count": 10834}, {"decade": 2010, "rnk": 4, "country": "DE", "patent_count": 10725}, {"decade": 2010, "rnk": 5, "country": "CN", "patent_count": 10392}, {"decade": 2020, "rnk": 1, "country": "US", "patent_count": 3848}, {"decade": 2020, "rnk": 2, "country": "NL", "patent_count": 1596}, {"decade": 2020, "rnk": 3, "country": "DE", "patent_count": 542}, {"decade": 2020, "rnk": 4, "country": "JP", "patent_count": 531}, {"decade": 2020, "rnk": 5, "country": "KR", "patent_count": 501}], "tech": [{"year": 1976, "patent_type": "utility", "patent_count": 70199}, {"year": 1976, "patent_type": "reissue", "patent_count": 419}, {"year": 1976, "patent_type": "design", "patent_count": 298}, {"year": 1976, "patent_type": "plant", "patent_count": 14}, {"year": 1976, "patent_type": "defensive publication", "patent_count": 11}, {"year": 1977, "patent_type": "utility", "patent_count": 65206}, {"year": 1977, "patent_type": "design", "patent_count": 3926}, {"year": 1977, "patent_type": "reissue", "patent_count": 411}, {"year": 1977, "patent_type": "plant", "patent_count": 173}, {"year": 1977, "patent_type": "defensive publication", "patent_count": 104}, {"year": 1978, "patent_type": "utility", "patent_count": 66074}, {"year": 1978, "patent_type": "design", "patent_count": 3862}, {"year": 1978, "patent_type": "reissue", "patent_count": 375}, {"year": 1978, "patent_type": "plant", "patent_count": 186}, {"year": 1978, "patent_type": "defensive publication", "patent_count": 89}, {"year": 1979, "patent_type": "utility", "patent_count": 48839}, {"year": 1979, "patent_type": "design", "patent_count": 3119}, {"year": 1979, "patent_type": "reissue", "patent_count": 310}, {"year": 1979, "patent_type": "plant", "patent_count": 131}, {"year": 1979, "patent_type": "defensive publication", "patent_count": 85}, {"year": 1980, "patent_type": "utility", "patent_count": 61807}, {"year": 1980, "patent_type": "design", "patent_count": 3948}, {"year": 1980, "patent_type": "reissue", "patent_count": 290}, {"year": 1980, "patent_type": "plant", "patent_count": 117}, {"year": 1980, "patent_type": "defensive publication", "patent_count": 49}, {"year": 1980, "patent_type": "TVPP", "patent_count": 1}, {"year": 1981, "patent_type": "utility", "patent_count": 65771}, {"year": 1981, "patent_type": "design", "patent_count": 4744}, {"year": 1981, "patent_type": "reissue", "patent_count": 364}, {"year": 1981, "patent_type": "plant", "patent_count": 183}, {"year": 1981, "patent_type": "defensive publication", "patent_count": 50}, {"year": 1982, "patent_type": "utility", "patent_count": 57874}, {"year": 1982, "patent_type": "design", "patent_count": 4943}, {"year": 1982, "patent_type": "reissue", "patent_count": 271}, {"year": 1982, "patent_type": "plant", "patent_count": 173}, {"year": 1982, "patent_type": "defensive publication", "patent_count": 31}, {"year": 1983, "patent_type": "utility", "patent_count": 56861}, {"year": 1983, "patent_type": "design", "patent_count": 4565}, {"year": 1983, "patent_type": "reissue", "patent_count": 361}, {"year": 1983, "patent_type": "plant", "patent_count": 197}, {"year": 1983, "patent_type": "defensive publication", "patent_count": 34}, {"year": 1983, "patent_type": "TVPP", "patent_count": 1}, {"year": 1984, "patent_type": "utility", "patent_count": 67212}, {"year": 1984, "patent_type": "design", "patent_count": 4939}, {"year": 1984, "patent_type": "reissue", "patent_count": 299}, {"year": 1984, "patent_type": "plant", "patent_count": 211}, {"year": 1984, "patent_type": "defensive publication", "patent_count": 28}, {"year": 1985, "patent_type": "utility", "patent_count": 71665}, {"year": 1985, "patent_type": "design", "patent_count": 5070}, {"year": 1985, "patent_type": "reissue", "patent_count": 271}, {"year": 1985, "patent_type": "plant", "patent_count": 241}, {"year": 1985, "patent_type": "defensive publication", "patent_count": 22}, {"year": 1985, "patent_type": "statutory invention registration", "patent_count": 6}, {"year": 1985, "patent_type": "TVPP", "patent_count": 1}, {"year": 1986, "patent_type": "utility", "patent_count": 70863}, {"year": 1986, "patent_type": "design", "patent_count": 5527}, {"year": 1986, "patent_type": "reissue", "patent_count": 257}, {"year": 1986, "patent_type": "plant", "patent_count": 224}, {"year": 1986, "patent_type": "statutory invention registration", "patent_count": 175}, {"year": 1986, "patent_type": "defensive publication", "patent_count": 4}, {"year": 1987, "patent_type": "utility", "patent_count": 82943}, {"year": 1987, "patent_type": "design", "patent_count": 5960}, {"year": 1987, "patent_type": "reissue", "patent_count": 247}, {"year": 1987, "patent_type": "plant", "patent_count": 228}, {"year": 1987, "patent_type": "statutory invention registration", "patent_count": 212}, {"year": 1987, "patent_type": "defensive publication", "patent_count": 1}, {"year": 1988, "patent_type": "utility", "patent_count": 77936}, {"year": 1988, "patent_type": "design", "patent_count": 5679}, {"year": 1988, "patent_type": "plant", "patent_count": 425}, {"year": 1988, "patent_type": "reissue", "patent_count": 243}, {"year": 1988, "patent_type": "statutory invention registration", "patent_count": 165}, {"year": 1988, "patent_type": "defensive publication", "patent_count": 1}, {"year": 1989, "patent_type": "utility", "patent_count": 95566}, {"year": 1989, "patent_type": "design", "patent_count": 6092}, {"year": 1989, "patent_type": "plant", "patent_count": 587}, {"year": 1989, "patent_type": "reissue", "patent_count": 317}, {"year": 1989, "patent_type": "statutory invention registration", "patent_count": 157}, {"year": 1990, "patent_type": "utility", "patent_count": 90421}, {"year": 1990, "patent_type": "design", "patent_count": 8024}, {"year": 1990, "patent_type": "reissue", "patent_count": 370}, {"year": 1990, "patent_type": "plant", "patent_count": 318}, {"year": 1990, "patent_type": "statutory invention registration", "patent_count": 142}, {"year": 1991, "patent_type": "utility", "patent_count": 96561}, {"year": 1991, "patent_type": "design", "patent_count": 9569}, {"year": 1991, "patent_type": "plant", "patent_count": 353}, {"year": 1991, "patent_type": "reissue", "patent_count": 264}, {"year": 1991, "patent_type": "statutory invention registration", "patent_count": 144}, {"year": 1992, "patent_type": "utility", "patent_count": 97473}, {"year": 1992, "patent_type": "design", "patent_count": 9269}, {"year": 1992, "patent_type": "reissue", "patent_count": 360}, {"year": 1992, "patent_type": "plant", "patent_count": 321}, {"year": 1992, "patent_type": "statutory invention registration", "patent_count": 117}, {"year": 1993, "patent_type": "utility", "patent_count": 98385}, {"year": 1993, "patent_type": "design", "patent_count": 10632}, {"year": 1993, "patent_type": "plant", "patent_count": 442}, {"year": 1993, "patent_type": "reissue", "patent_count": 330}, {"year": 1993, "patent_type": "statutory invention registration", "patent_count": 144}, {"year": 1994, "patent_type": "utility", "patent_count": 101695}, {"year": 1994, "patent_type": "design", "patent_count": 11095}, {"year": 1994, "patent_type": "plant", "patent_count": 499}, {"year": 1994, "patent_type": "reissue", "patent_count": 318}, {"year": 1994, "patent_type": "statutory invention registration", "patent_count": 116}, {"year": 1995, "patent_type": "utility", "patent_count": 101432}, {"year": 1995, "patent_type": "design", "patent_count": 11706}, {"year": 1995, "patent_type": "plant", "patent_count": 387}, {"year": 1995, "patent_type": "reissue", "patent_count": 314}, {"year": 1995, "patent_type": "statutory invention registration", "patent_count": 115}, {"year": 1996, "patent_type": "utility", "patent_count": 109654}, {"year": 1996, "patent_type": "design", "patent_count": 11410}, {"year": 1996, "patent_type": "plant", "patent_count": 360}, {"year": 1996, "patent_type": "reissue", "patent_count": 278}, {"year": 1996, "patent_type": "statutory invention registration", "patent_count": 109}, {"year": 1997, "patent_type": "utility", "patent_count": 112020}, {"year": 1997, "patent_type": "design", "patent_count": 11413}, {"year": 1997, "patent_type": "plant", "patent_count": 394}, {"year": 1997, "patent_type": "reissue", "patent_count": 276}, {"year": 1997, "patent_type": "statutory invention registration", "patent_count": 78}, {"year": 1998, "patent_type": "utility", "patent_count": 147576}, {"year": 1998, "patent_type": "design", "patent_count": 14768}, {"year": 1998, "patent_type": "plant", "patent_count": 561}, {"year": 1998, "patent_type": "reissue", "patent_count": 298}, {"year": 1998, "patent_type": "statutory invention registration", "patent_count": 62}, {"year": 1999, "patent_type": "utility", "patent_count": 153592}, {"year": 1999, "patent_type": "design", "patent_count": 14735}, {"year": 1999, "patent_type": "reissue", "patent_count": 444}, {"year": 1999, "patent_type": "plant", "patent_count": 421}, {"year": 1999, "patent_type": "statutory invention registration", "patent_count": 60}, {"year": 2000, "patent_type": "utility", "patent_count": 157595}, {"year": 2000, "patent_type": "design", "patent_count": 17416}, {"year": 2000, "patent_type": "plant", "patent_count": 552}, {"year": 2000, "patent_type": "reissue", "patent_count": 525}, {"year": 2000, "patent_type": "statutory invention registration", "patent_count": 104}, {"year": 2001, "patent_type": "utility", "patent_count": 166158}, {"year": 2001, "patent_type": "design", "patent_count": 16873}, {"year": 2001, "patent_type": "plant", "patent_count": 584}, {"year": 2001, "patent_type": "reissue", "patent_count": 480}, {"year": 2001, "patent_type": "statutory invention registration", "patent_count": 77}, {"year": 2002, "patent_type": "utility", "patent_count": 167400}, {"year": 2002, "patent_type": "design", "patent_count": 15451}, {"year": 2002, "patent_type": "plant", "patent_count": 1133}, {"year": 2002, "patent_type": "reissue", "patent_count": 461}, {"year": 2002, "patent_type": "statutory invention registration", "patent_count": 49}, {"year": 2003, "patent_type": "utility", "patent_count": 169077}, {"year": 2003, "patent_type": "design", "patent_count": 16576}, {"year": 2003, "patent_type": "plant", "patent_count": 994}, {"year": 2003, "patent_type": "reissue", "patent_count": 421}, {"year": 2003, "patent_type": "statutory invention registration", "patent_count": 36}, {"year": 2004, "patent_type": "utility", "patent_count": 164384}, {"year": 2004, "patent_type": "design", "patent_count": 15695}, {"year": 2004, "patent_type": "plant", "patent_count": 1016}, {"year": 2004, "patent_type": "reissue", "patent_count": 298}, {"year": 2004, "patent_type": "statutory invention registration", "patent_count": 20}, {"year": 2005, "patent_type": "utility", "patent_count": 143891}, {"year": 2005, "patent_type": "design", "patent_count": 12953}, {"year": 2005, "patent_type": "plant", "patent_count": 716}, {"year": 2005, "patent_type": "reissue", "patent_count": 246}, {"year": 2005, "patent_type": "statutory invention registration", "patent_count": 23}, {"year": 2006, "patent_type": "utility", "patent_count": 173822}, {"year": 2006, "patent_type": "design", "patent_count": 20967}, {"year": 2006, "patent_type": "plant", "patent_count": 1149}, {"year": 2006, "patent_type": "reissue", "patent_count": 519}, {"year": 2006, "patent_type": "statutory invention registration", "patent_count": 32}, {"year": 2007, "patent_type": "utility", "patent_count": 157331}, {"year": 2007, "patent_type": "design", "patent_count": 24063}, {"year": 2007, "patent_type": "plant", "patent_count": 1047}, {"year": 2007, "patent_type": "reissue", "patent_count": 508}, {"year": 2007, "patent_type": "statutory invention registration", "patent_count": 29}, {"year": 2008, "patent_type": "utility", "patent_count": 157788}, {"year": 2008, "patent_type": "design", "patent_count": 25565}, {"year": 2008, "patent_type": "plant", "patent_count": 1240}, {"year": 2008, "patent_type": "reissue", "patent_count": 647}, {"year": 2008, "patent_type": "statutory invention registration", "patent_count": 20}, {"year": 2009, "patent_type": "utility", "patent_count": 167463}, {"year": 2009, "patent_type": "design", "patent_count": 23120}, {"year": 2009, "patent_type": "plant", "patent_count": 1009}, {"year": 2009, "patent_type": "reissue", "patent_count": 454}, {"year": 2009, "patent_type": "statutory invention registration", "patent_count": 6}, {"year": 2010, "patent_type": "utility", "patent_count": 219848}, {"year": 2010, "patent_type": "design", "patent_count": 22804}, {"year": 2010, "patent_type": "plant", "patent_count": 982}, {"year": 2010, "patent_type": "reissue", "patent_count": 948}, {"year": 2010, "patent_type": "statutory invention registration", "patent_count": 17}, {"year": 2011, "patent_type": "utility", "patent_count": 224871}, {"year": 2011, "patent_type": "design", "patent_count": 21361}, {"year": 2011, "patent_type": "reissue", "patent_count": 1031}, {"year": 2011, "patent_type": "plant", "patent_count": 823}, {"year": 2011, "patent_type": "statutory invention registration", "patent_count": 15}, {"year": 2012, "patent_type": "utility", "patent_count": 253633}, {"year": 2012, "patent_type": "design", "patent_count": 21959}, {"year": 2012, "patent_type": "plant", "patent_count": 860}, {"year": 2012, "patent_type": "reissue", "patent_count": 825}, {"year": 2012, "patent_type": "statutory invention registration", "patent_count": 8}, {"year": 2013, "patent_type": "utility", "patent_count": 278518}, {"year": 2013, "patent_type": "design", "patent_count": 23478}, {"year": 2013, "patent_type": "plant", "patent_count": 847}, {"year": 2013, "patent_type": "reissue", "patent_count": 801}, {"year": 2013, "patent_type": "statutory invention registration", "patent_count": 14}, {"year": 2014, "patent_type": "utility", "patent_count": 301643}, {"year": 2014, "patent_type": "design", "patent_count": 23666}, {"year": 2014, "patent_type": "plant", "patent_count": 1072}, {"year": 2014, "patent_type": "reissue", "patent_count": 627}, {"year": 2014, "patent_type": "statutory invention registration", "patent_count": 6}, {"year": 2015, "patent_type": "utility", "patent_count": 299382}, {"year": 2015, "patent_type": "design", "patent_count": 26000}, {"year": 2015, "patent_type": "plant", "patent_count": 1074}, {"year": 2015, "patent_type": "reissue", "patent_count": 513}, {"year": 2016, "patent_type": "utility", "patent_count": 304126}, {"year": 2016, "patent_type": "design", "patent_count": 28886}, {"year": 2016, "patent_type": "plant", "patent_count": 1235}, {"year": 2016, "patent_type": "reissue", "patent_count": 427}, {"year": 2017, "patent_type": "utility", "patent_count": 320003}, {"year": 2017, "patent_type": "design", "patent_count": 30879}, {"year": 2017, "patent_type": "plant", "patent_count": 1311}, {"year": 2017, "patent_type": "reissue", "patent_count": 394}, {"year": 2018, "patent_type": "utility", "patent_count": 308853}, {"year": 2018, "patent_type": "design", "patent_count": 30513}, {"year": 2018, "patent_type": "plant", "patent_count": 1208}, {"year": 2018, "patent_type": "reissue", "patent_count": 529}, {"year": 2018, "patent_type": "statutory invention registration", "patent_count": 1}, {"year": 2019, "patent_type": "utility", "patent_count": 355923}, {"year": 2019, "patent_type": "design", "patent_count": 34813}, {"year": 2019, "patent_type": "plant", "patent_count": 1275}, {"year": 2019, "patent_type": "reissue", "patent_count": 607}, {"year": 2020, "patent_type": "utility", "patent_count": 353701}, {"year": 2020, "patent_type": "design", "patent_count": 34895}, {"year": 2020, "patent_type": "plant", "patent_count": 1398}, {"year": 2020, "patent_type": "reissue", "patent_count": 578}, {"year": 2021, "patent_type": "utility", "patent_count": 329097}, {"year": 2021, "patent_type": "design", "patent_count": 33161}, {"year": 2021, "patent_type": "plant", "patent_count": 1085}, {"year": 2021, "patent_type": "reissue", "patent_count": 486}, {"year": 2022, "patent_type": "utility", "patent_count": 324698}, {"year": 2022, "patent_type": "design", "patent_count": 34167}, {"year": 2022, "patent_type": "plant", "patent_count": 1074}, {"year": 2022, "patent_type": "reissue", "patent_count": 478}, {"year": 2023, "patent_type": "utility", "patent_count": 313707}, {"year": 2023, "patent_type": "design", "patent_count": 35278}, {"year": 2023, "patent_type": "plant", "patent_count": 689}, {"year": 2023, "patent_type": "reissue", "patent_count": 419}, {"year": 2024, "patent_type": "utility", "patent_count": 325602}, {"year": 2024, "patent_type": "design", "patent_count": 46960}, {"year": 2024, "patent_type": "plant", "patent_count": 803}, {"year": 2024, "patent_type": "reissue", "patent_count": 487}, {"year": 2025, "patent_type": "utility", "patent_count": 325822}, {"year": 2025, "patent_type": "design", "patent_count": 51641}, {"year": 2025, "patent_type": "plant", "patent_count": 819}, {"year": 2025, "patent_type": "reissue", "patent_count": 459}], "collab": [{"patent_id": "9971713", "patent_title": "Multi-petascale highly efficient parallel supercomputer", "patent_type": "utility", "patent_date": "2018-05-15", "inventor_count": 60}, {"patent_id": "9974903", "patent_title": "System and method for providing alerts optimized for a user", "patent_type": "utility", "patent_date": "2018-05-22", "inventor_count": 36}, {"patent_id": "9867493", "patent_title": "Method and apparatus for cartridge-based carbonation of beverages", "patent_type": "utility", "patent_date": "2018-01-16", "inventor_count": 33}, {"patent_id": "9868721", "patent_title": "Triazole agonists of the APJ receptor", "patent_type": "utility", "patent_date": "2018-01-16", "inventor_count": 32}, {"patent_id": "RE43532", "patent_title": "Hospital bed", "patent_type": "reissue", "patent_date": "2012-07-24", "inventor_count": 31}, {"patent_id": "9988505", "patent_title": "Polyethylene compositions and films formed therefrom", "patent_type": "utility", "patent_date": "2018-06-05", "inventor_count": 29}, {"patent_id": "9981955", "patent_title": "Antiviral compounds", "patent_type": "utility", "patent_date": "2018-05-29", "inventor_count": 29}, {"patent_id": "9914921", "patent_title": "Secreted proteins", "patent_type": "utility", "patent_date": "2018-03-13", "inventor_count": 28}, {"patent_id": "RE43298", "patent_title": "Peptides as NS3-serine protease inhibitors of hepatitis C virus", "patent_type": "reissue", "patent_date": "2012-04-03", "inventor_count": 28}, {"patent_id": "9890158", "patent_title": "N-sulfonylated pyrazolo[3,4-b]pyridin-6-carboxamides and method of use", "patent_type": "utility", "patent_date": "2018-02-13", "inventor_count": 28}, {"patent_id": "9913647", "patent_title": "Disposable loading unit for use with a surgical instrument", "patent_type": "utility", "patent_date": "2018-03-13", "inventor_count": 28}, {"patent_id": "9907147", "patent_title": "Methods and apparatus for information management and control of outdoor lighting networks", "patent_type": "utility", "patent_date": "2018-02-27", "inventor_count": 27}, {"patent_id": "9936834", "patent_title": "Method and apparatus for cartridge-based carbonation of beverages", "patent_type": "utility", "patent_date": "2018-04-10", "inventor_count": 27}, {"patent_id": "9911670", "patent_title": "Integrated circuit including NCEM-enabled, via-open/resistance-configured fill cells, with NCEM pads formed from at least three conductive stripes positioned between adjacent gate", "patent_type": "utility", "patent_date": "2018-03-06", "inventor_count": 26}, {"patent_id": "9953889", "patent_title": "Process for making semiconductor dies, chips, and wafers using non-contact measurements obtained from DOEs of NCEM-enabled fill cells on test wafers that include multiple means/steps for enabling NC detection of GATECNT-GATE via opens", "patent_type": "utility", "patent_date": "2018-04-24", "inventor_count": 26}, {"patent_id": "9979427", "patent_title": "Privacy and security systems and methods of use", "patent_type": "utility", "patent_date": "2018-05-22", "inventor_count": 26}, {"patent_id": "9947601", "patent_title": "Integrated circuit including NCEM-enabled, side-to-side gap-configured fill cells, with NCEM pads formed from at least three conductive stripes positioned between adjacent gates", "patent_type": "utility", "patent_date": "2018-04-17", "inventor_count": 26}, {"patent_id": "9911669", "patent_title": "Integrated circuit including NCEM-enabled, diagonal gap-configured fill cells, with NCEM pads formed from at least three conductive stripes positioned between adjacent gates", "patent_type": "utility", "patent_date": "2018-03-06", "inventor_count": 26}, {"patent_id": "9870966", "patent_title": "Process for making semiconductor dies, chips and wafers using non-contact measurements obtained from DOEs of NCEM-enabled fill cells on test wafers that include multiple means/steps for enabling NC detection of AACNT-TS via opens", "patent_type": "utility", "patent_date": "2018-01-16", "inventor_count": 26}, {"patent_id": "9871028", "patent_title": "Process for making and using a semiconductor wafer containing first and second DOEs of standard cell compatible, NCEM-enabled fill cells, with the first DOE including tip-to-tip short configured fill cells, and the second DOE including chamfer short configured fill cells", "patent_type": "utility", "patent_date": "2018-01-16", "inventor_count": 26}, {"patent_id": "9905553", "patent_title": "Integrated circuit containing standard logic cells and library-compatible, NCEM-enabled fill cells, including at least via-open-configured, AACNT-short-configured, GATECNT-short-configured, and metal-short-configured, NCEM-enabled fill cells", "patent_type": "utility", "patent_date": "2018-02-27", "inventor_count": 26}, {"patent_id": "9984944", "patent_title": "Integrated circuit containing DOEs of GATECNT-tip-to-side-short-configured, NCEM-enabled fill cells", "patent_type": "utility", "patent_date": "2018-05-29", "inventor_count": 26}, {"patent_id": "9870962", "patent_title": "Integrated circuit including NCEM-enabled, interlayer overlap-configured fill cells, with NCEM pads formed from at least three conductive stripes positioned between adjacent gates", "patent_type": "utility", "patent_date": "2018-01-16", "inventor_count": 26}, {"patent_id": "9865583", "patent_title": "Process for making and using a semiconductor wafer containing first and second DOEs of standard cell compatible, NCEM-enabled fill cells, with the first DOE including snake open configured fill cells, and the second DOE including stitch open configured fill cells", "patent_type": "utility", "patent_date": "2018-01-09", "inventor_count": 26}, {"patent_id": "9911649", "patent_title": "Process for making and using mesh-style NCEM pads", "patent_type": "utility", "patent_date": "2018-03-06", "inventor_count": 26}, {"patent_id": "9911668", "patent_title": "Integrated circuit including NCEM-enabled, corner gap-configured fill cells, with NCEM pads formed from at least three conductive stripes positioned between adjacent gates", "patent_type": "utility", "patent_date": "2018-03-06", "inventor_count": 26}, {"patent_id": "9929136", "patent_title": "Process for making and using a semiconductor wafer containing first and second DOEs of standard cell compatible, NCEM-Enabled fill cells, with the first DOE including tip-to-side short configured fill cells, and the second DOE including chamfer short configured fill cells", "patent_type": "utility", "patent_date": "2018-03-27", "inventor_count": 26}, {"patent_id": "9899276", "patent_title": "Process for making an integrated circuit that includes NCEM-enabled, interlayer overlap-configured fill cells, with NCEM pads formed from at least three conductive stripes positioned between adjacent gates", "patent_type": "utility", "patent_date": "2018-02-20", "inventor_count": 26}, {"patent_id": "9922968", "patent_title": "Process for making and using a semiconductor wafer containing first and second DOEs of standard cell compatible, NCEM-enabled fill cells, with the first DOE including side-to-side short configured fill cells, and the second DOE including chamfer short configured fill cells", "patent_type": "utility", "patent_date": "2018-03-20", "inventor_count": 26}, {"patent_id": "9929063", "patent_title": "Process for making an integrated circuit that includes NCEM-Enabled, tip-to-side gap-configured fill cells, with NCEM pads formed from at least three conductive stripes positioned between adjacent gates", "patent_type": "utility", "patent_date": "2018-03-27", "inventor_count": 26}, {"patent_id": "9881843", "patent_title": "Integrated circuit including NCEM-Enabled, tip-to-tip gap-configured fill cells, with NCEM pads formed from at least three conductive stripes positioned between adjacent gates", "patent_type": "utility", "patent_date": "2018-01-30", "inventor_count": 26}, {"patent_id": "9905487", "patent_title": "Process for making semiconductor dies, chips, and wafers using non-contact measurements obtained from DOEs of NCEM-enabled fill cells on test wafers that include multiple means/steps for enabling NC detection of V0 via opens", "patent_type": "utility", "patent_date": "2018-02-27", "inventor_count": 26}, {"patent_id": "9922890", "patent_title": "Integrated circuit including NCEM-enabled, snake-configured fill cells, with NCEM pads formed from at least three conductive stripes positioned between adjacent gates", "patent_type": "utility", "patent_date": "2018-03-20", "inventor_count": 26}, {"patent_id": "9995494", "patent_title": "Air conditioner and method for controlling the same", "patent_type": "utility", "patent_date": "2018-06-12", "inventor_count": 25}, {"patent_id": "9952759", "patent_title": "Touch screen device, method, and graphical user interface for customizing display of content category icons", "patent_type": "utility", "patent_date": "2018-04-24", "inventor_count": 25}, {"patent_id": "9963512", "patent_title": "Dual-target antibody targeting VEGFR-2 and DLL4, and pharmaceutical composition including same", "patent_type": "utility", "patent_date": "2018-05-08", "inventor_count": 25}, {"patent_id": "9983526", "patent_title": "Fixing device and image forming apparatus including same", "patent_type": "utility", "patent_date": "2018-05-29", "inventor_count": 25}, {"patent_id": "9970059", "patent_title": "Survival predictor for diffuse large B cell lymphoma", "patent_type": "utility", "patent_date": "2018-05-15", "inventor_count": 24}, {"patent_id": "9879022", "patent_title": "Bicyclic-fused heteroaryl or aryl compounds", "patent_type": "utility", "patent_date": "2018-01-30", "inventor_count": 24}, {"patent_id": "PP12426", "patent_title": "Mint plant named &#8216;Kosi&#8217;", "patent_type": "plant", "patent_date": "2002-02-26", "inventor_count": 24}, {"patent_id": "9921661", "patent_title": "Optical proximity sensor and associated user interface", "patent_type": "utility", "patent_date": "2018-03-20", "inventor_count": 23}, {"patent_id": "PP10935", "patent_title": "Mini plant Mentha arvensis `Himalaya`", "patent_type": "plant", "patent_date": "1999-06-01", "inventor_count": 23}, {"patent_id": "9992292", "patent_title": "Wellness support groups for mobile devices", "patent_type": "utility", "patent_date": "2018-06-05", "inventor_count": 22}, {"patent_id": "9859541", "patent_title": "Rechargeable lithium battery and method of fabricating same", "patent_type": "utility", "patent_date": "2018-01-02", "inventor_count": 22}, {"patent_id": "9903896", "patent_title": "Method for testing dynamic model parameters of wind power plant", "patent_type": "utility", "patent_date": "2018-02-27", "inventor_count": 22}, {"patent_id": "9938281", "patent_title": "Purine inhibitors of human phosphatidylinositol 3-kinase delta", "patent_type": "utility", "patent_date": "2018-04-10", "inventor_count": 22}, {"patent_id": "9919723", "patent_title": "Aerial camera system and method for determining size parameters of vehicle systems", "patent_type": "utility", "patent_date": "2018-03-20", "inventor_count": 22}, {"patent_id": "9988369", "patent_title": "Heterocyclic triazole compounds as agonists of the APJ receptor", "patent_type": "utility", "patent_date": "2018-06-05", "inventor_count": 22}, {"patent_id": "9963448", "patent_title": "Bicyclic inhibitors of PAD4", "patent_type": "utility", "patent_date": "2018-05-08", "inventor_count": 21}, {"patent_id": "9938356", "patent_title": "Binding molecules specific for CD73 and uses thereof", "patent_type": "utility", "patent_date": "2018-04-10", "inventor_count": 21}], "claims": [{"patent_type": "reissue", "avg_claims": 24.25, "max_claims": 358, "min_claims": 1, "patent_count": 21855}, {"patent_type": "utility", "avg_claims": 15.76, "max_claims": 887, "min_claims": 1, "patent_count": 8531961}, {"patent_type": "TVPP", "avg_claims": 14.0, "max_claims": 17, "min_claims": 11, "patent_count": 3}, {"patent_type": "statutory invention registration", "avg_claims": 10.24, "max_claims": 74, "min_claims": 1, "patent_count": 2259}, {"patent_type": "defensive publication", "avg_claims": 7.64, "max_claims": 54, "min_claims": 1, "patent_count": 509}, {"patent_type": "design", "avg_claims": 1.0, "max_claims": 23, "min_claims": 1, "patent_count": 864433}, {"patent_type": "plant", "avg_claims": 1.0, "max_claims": 5, "min_claims": 1, "patent_count": 33141}], "withdrawn": [{"country": "US", "withdrawn_count": 720}, {"country": "JP", "withdrawn_count": 413}, {"country": "KR", "withdrawn_count": 257}, {"country": "DE", "withdrawn_count": 75}, {"country": "CN", "withdrawn_count": 47}, {"country": "CA", "withdrawn_count": 42}, {"country": "IL", "withdrawn_count": 42}, {"country": "GB", "withdrawn_count": 26}, {"country": "SE", "withdrawn_count": 24}, {"country": "ES", "withdrawn_count": 16}, {"country": "TW", "withdrawn_count": 13}, {"country": "IN", "withdrawn_count": 11}, {"country": "FR", "withdrawn_count": 11}, {"country": "IT", "withdrawn_count": 9}, {"country": "AT", "withdrawn_count": 9}, {"country": "BE", "withdrawn_count": 8}, {"country": "CH", "withdrawn_count": 6}, {"country": "FI", "withdrawn_count": 6}, {"country": "AU", "withdrawn_count": 6}, {"country": "CM", "withdrawn_count": 4}]};
+
+const yearly = DATA.yearly;
+const countries = DATA.countries.slice(0,10);
+const typeData = DATA.types;
+const techRaw = DATA.tech;
+const decadeRaw = DATA.decades;
+const claimsData = DATA.claims;
+
+const companies = [
+  {n:"IBM",v:4748},{n:"Samsung Display",v:4617},{n:"LG Electronics",v:1640},
+  {n:"Canon",v:1584},{n:"Intel",v:1345},{n:"Qualcomm",v:1119},
+  {n:"Microsoft",v:1100},{n:"Sony",v:1089},{n:"TSMC",v:1070},
+  {n:"Apple",v:1049},{n:"Toyota",v:997},{n:"Yoder Brother",v:995},
+  {n:"Google",v:989},{n:"Amazon",v:899},{n:"BOE Technology",v:860}
+];
+
+const inventors = DATA.inventors.slice(0,15);
+const typeColors = ["#378ADD","#D85A30","#1D9E75","#BA7517","#888780"];
+const decadeColors = {US:"#378ADD",JP:"#D85A30",DE:"#1D9E75",KR:"#BA7517",CN:"#7F77DD",GB:"#D4537E",FR:"#639922",NL:"#E24B4A"};
+
+let trendChart;
+function showTrend(mode, btn) {
+  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+  btn.classList.add("active");
+  if (!trendChart) return;
+  const isCumul = mode === "cumul";
+  trendChart.data.datasets[0].data = yearly.map(d => isCumul ? d.cumulative_total : d.patents_filed);
+  trendChart.options.scales.y.ticks.callback = v => isCumul ? (v/1e6).toFixed(1)+"M" : (v/1e3).toFixed(0)+"K";
+  trendChart.update();
+}
+
+trendChart = new Chart(document.getElementById("trendChart"), {
+  type: "line",
+  data: {
+    labels: yearly.map(d => d.year),
+    datasets: [{
+      label: "Annual filings",
+      data: yearly.map(d => d.patents_filed),
+      borderColor: "#378ADD", backgroundColor: "rgba(55,138,221,0.08)",
+      borderWidth: 2, pointRadius: 0, fill: true, tension: 0.3
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { maxTicksLimit: 10, color: "#888" }, grid: { display: false } },
+      y: { ticks: { callback: v => (v/1e3).toFixed(0)+"K", color: "#888" }, grid: { color: "rgba(0,0,0,0.06)" } }
+    }
+  }
+});
+
+new Chart(document.getElementById("countryChart"), {
+  type: "bar",
+  data: {
+    labels: countries.map(d => d.country + " (" + d.pct_share + "%)"),
+    datasets: [{ label: "Patents", data: countries.map(d => d.patent_count), backgroundColor: "#378ADD", borderRadius: 3 }]
+  },
+  options: {
+    indexAxis: "y", responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { callback: v => (v/1e3).toFixed(0)+"K", color: "#888" }, grid: { color: "rgba(0,0,0,0.06)" } },
+      y: { ticks: { color: "#888", font: { size: 12 } }, grid: { display: false } }
+    }
+  }
+});
+
+const legendEl = document.getElementById("typeLegend");
+typeData.forEach((d, i) => {
+  legendEl.innerHTML += '<span><span class="legend-dot" style="background:' + typeColors[i] + '"></span>' + d.patent_type + ' ' + d.pct_share + '%</span>';
+});
+new Chart(document.getElementById("typeChart"), {
+  type: "doughnut",
+  data: {
+    labels: typeData.map(d => d.patent_type),
+    datasets: [{ data: typeData.map(d => d.patent_count), backgroundColor: typeColors, borderWidth: 2 }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    cutout: "60%"
+  }
+});
+
+new Chart(document.getElementById("compChart"), {
+  type: "bar",
+  data: {
+    labels: companies.map(d => d.n),
+    datasets: [{ label: "Patents", data: companies.map(d => d.v), backgroundColor: "#7F77DD", borderRadius: 3 }]
+  },
+  options: {
+    indexAxis: "y", responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { callback: v => v.toLocaleString(), color: "#888" }, grid: { color: "rgba(0,0,0,0.06)" } },
+      y: { ticks: { color: "#888", font: { size: 12 } }, grid: { display: false } }
+    }
+  }
+});
+
+new Chart(document.getElementById("invChart"), {
+  type: "bar",
+  data: {
+    labels: inventors.map(d => d.inventor_name + " (" + d.country + ")"),
+    datasets: [{ label: "Patents", data: inventors.map(d => d.patent_count), backgroundColor: "#1D9E75", borderRadius: 3 }]
+  },
+  options: {
+    indexAxis: "y", responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { color: "#888" }, grid: { color: "rgba(0,0,0,0.06)" } },
+      y: { ticks: { color: "#888", font: { size: 11 } }, grid: { display: false } }
+    }
+  }
+});
+
+const decades = [...new Set(decadeRaw.map(d => d.decade))];
+const dCountries = [...new Set(decadeRaw.map(d => d.country))];
+new Chart(document.getElementById("decadeChart"), {
+  type: "bar",
+  data: {
+    labels: decades.map(d => d + "s"),
+    datasets: dCountries.map(c => ({
+      label: c,
+      data: decades.map(dec => { const r = decadeRaw.find(d => d.decade === dec && d.country === c); return r ? r.patent_count : 0; }),
+      backgroundColor: decadeColors[c] || "#888",
+      borderRadius: 2
+    }))
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: "bottom", labels: { font: { size: 11 }, boxWidth: 12, padding: 8 } } },
+    scales: {
+      x: { ticks: { color: "#888" }, grid: { display: false } },
+      y: { ticks: { callback: v => (v/1e3).toFixed(0)+"K", color: "#888" }, grid: { color: "rgba(0,0,0,0.06)" } }
+    }
+  }
+});
+
+const techYears = [...new Set(techRaw.map(d => d.year))].sort();
+const techTypes = ["utility","design","plant","reissue"];
+const techColors = ["#378ADD","#D85A30","#1D9E75","#BA7517"];
+new Chart(document.getElementById("techChart"), {
+  type: "line",
+  data: {
+    labels: techYears,
+    datasets: techTypes.map((t, i) => ({
+      label: t,
+      data: techYears.map(y => { const r = techRaw.find(d => d.year === y && d.patent_type === t); return r ? r.patent_count : 0; }),
+      borderColor: techColors[i], backgroundColor: "transparent",
+      borderWidth: 2, pointRadius: 3, tension: 0.3
+    }))
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { color: "#888" }, grid: { display: false } },
+      y: { ticks: { callback: v => (v/1e3).toFixed(0)+"K", color: "#888" }, grid: { color: "rgba(0,0,0,0.06)" } }
+    }
+  }
+});
+
+new Chart(document.getElementById("claimsChart"), {
+  type: "bar",
+  data: {
+    labels: claimsData.map(d => d.patent_type),
+    datasets: [{ label: "Avg claims", data: claimsData.map(d => d.avg_claims), backgroundColor: "#BA7517", borderRadius: 3 }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { color: "#888" }, grid: { display: false } },
+      y: { ticks: { color: "#888" }, grid: { color: "rgba(0,0,0,0.06)" } }
+    }
+  }
+});
+</script>
+</body>
+</html>
