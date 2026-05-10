@@ -2,6 +2,8 @@ GitHub repo link: https://github.com/kiraboedna/cloudpipeline.git
 
 Dashboard link: https://kiraboedna.github.io/cloudpipeline/
 
+Reports link: https://github.com/kiraboedna/cloudpipeline/tree/main/reports
+
 # Global Patent Intelligence Data Pipeline
 
 Handles 1–5 GB PatentsView CSV files, loads them into PostgreSQL in chunks,
