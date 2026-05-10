@@ -110,3 +110,6 @@ python pipeline.py --skip-load
 - Only the columns needed for each table are read (`usecols`) — faster I/O
 - Inventors and assignees are **deduplicated in-memory** across chunks before insert
 - Indexes are created after loading for faster query performance
+
+## Limitations 
+The clean data files (dean_patents.csv, dean_inventors.csv and dean_companies.csv) couldnot be uploaded to GitHub due to file size contraints and limits exceeding GitHub's maximum upload threshold.The data was however processed and results are reflected in the dashboard and console report.
