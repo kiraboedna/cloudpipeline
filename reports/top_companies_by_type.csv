@@ -1,0 +1,28 @@
+patent_type,type_rank,company_name,patent_count
+design,1,"Nissan Motor Co., Ltd.",1
+design,1,A. Stucki Company,1
+design,1,Pan American Plant Co.,1
+design,1,"NEUVANA, LLC",1
+design,1,Mead Johnson & Co.,1
+design,1,Rhone-Poulenc Agrochimie,1
+design,1,"Quadra Wheelchairs, Inc.",1
+plant,1,"Yoder Brother, Inc.",995
+plant,2,BALL HORTICULTURAL COMPANY,655
+plant,3,"Walters Gardens, Inc.",616
+plant,4,Klemm + Sohn Gmbh & Co. KG,586
+plant,5,Dümmen Group B.V.,585
+reissue,1,"SAMSUNG DISPLAY CO., LTD.",472
+reissue,2,LG ELECTRONICS INC.,450
+reissue,3,SONY GROUP CORPORATION,265
+reissue,4,Kabushiki Kaisha Toshiba,193
+reissue,5,"HITACHI, LTD.",187
+statutory invention registration,1,The United States of America as represented by the Secretary of the Army,399
+statutory invention registration,2,"The United States of America, as represented by the Secretary of the Navy",300
+statutory invention registration,3,The United States of America as represented by the Secretary of the Air,140
+statutory invention registration,4,The United States of America as represented by the United States,122
+statutory invention registration,5,SHELL OIL COMPANY,105
+utility,1,International Business Machines Corporation,4670
+utility,2,"SAMSUNG DISPLAY CO., LTD.",4145
+utility,3,CANON KABUSHIKI KAISHA,1458
+utility,4,Intel Corporation,1290
+utility,5,LG ELECTRONICS INC.,1190

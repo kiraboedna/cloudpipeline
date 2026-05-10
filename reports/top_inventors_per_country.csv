@@ -1,0 +1,929 @@
+country,country_rank,inventor_name,patent_count
+AD,1,Bruno DeLean,3
+AD,2,Edward J. Tieleman,1
+AD,2,Viktor Lvovich Limonov,1
+AE,1,Ahmad Saleh,5
+AE,2,Paul Bernard Lee,4
+AE,3,Baker Mohammad,3
+AE,3,Simon Leiper,3
+AE,5,Sohmyung Ha,2
+AE,5,Victor Harris,2
+AE,5,Alberto Bauer,2
+AE,5,Arafat Jamil Al-Dweik,2
+AE,5,Omar Ali,2
+AE,5,Mohammed Ismail Elnaggar,2
+AE,5,Hani Hasan Mustafa Saleh,2
+AE,5,Mahmoud F. Y. Al Ahmad,2
+AF,1,Tomas Mecklin,1
+AM,1,Avetik Markosyan,3
+AM,2,Arnak Poghosyan,2
+AM,2,Ashot Nshan Harutyunyan,2
+AM,2,Naira Movses Grigoryan,2
+AM,5,Albert Manukyan,1
+AM,5,Armen Poghosyan,1
+AM,5,Levon Hovhannisyan,1
+AM,5,Roza Madoyan,1
+AM,5,HAYK BAGHDASARYAN,1
+AM,5,Hakob Sargsyan,1
+AR,1,Angel A. Gargiulo,9
+AR,2,Nicolas Catena,5
+AR,2,"Jose A. Navia, Sr.",5
+AR,4,Mario Rafael Hueda,3
+AR,4,Hugo Santiago Carrer,3
+AR,4,Diego Ernesto Crivelli,3
+AR,4,Rolando Aníbal Uría,3
+AT,1,Wolfgang Kirmann,16
+AT,2,Dirk Hammerschmidt,13
+AT,3,Udo Ausserlechner,10
+AT,4,Francisco Javier Santos Rodriguez,8
+AT,4,Andreas Wiesbauer,8
+AT,4,Ralf Siemieniec,8
+AU,1,Andrew Bernuetz,101
+AU,2,Graham Noel Brown,81
+AU,3,Ruijun Li,64
+AU,4,Todd Anthony Layt,45
+AU,5,Vincent David Andrew Mazzardis,33
+AZ,1,Azar Sadygov,1
+BA,1,Izudin Dzafic,1
+BD,1,Haseena Khan,1
+BD,1,S Md Jashimuddin Chisty,1
+BD,1,Mahboob Zaman,1
+BD,1,Muhammad S. Azam,1
+BD,1,Mohammed S. Haque,1
+BD,1,Mohammed S. Islam,1
+BD,1,Niaz Mahmood,1
+BD,1,Mohammad Tofajjal Hossain,1
+BD,1,Mohammad Shabbir Hossain,1
+BD,1,Nusrat Rahman,1
+BE,1,Dirk Pieters,170
+BE,2,Elien Sofie Pieters,42
+BE,3,Luc Remi Johan Pieters,33
+BE,4,Febe Flore,21
+BE,5,Daniel Cornelis,17
+BG,1,Luben Hristov,4
+BG,2,Branimir Angelov,3
+BG,2,Plamen Petkov,3
+BG,4,Kiril Petkov,2
+BG,4,Georgi Georgiev,2
+BH,1,Faisal Baksh,4
+BH,2,Eshaa Alkhalifa,1
+BH,2,Anjal Motwani,1
+BH,2,Abdul Khaliq,1
+BH,2,Samer Aljishi,1
+BH,2,Manimeldura Janaka Mendis,1
+BM,1,David Aubrey Plumptre,4
+BM,2,Jonathan Woodley,3
+BM,3,Clive Buckberry,2
+BM,3,Matthew Meredith Jones,2
+BM,3,Samuel Steel,2
+BN,1,Hajah Siti Fatimah Jaafar,1
+BN,1,"David Robert Davies, III",1
+BO,1,Corina Elizabeth Quiroga Banzer,1
+BR,1,Everton Gomes da Costa,15
+BR,2,Breno H. Leitao,8
+BR,3,Rafael C. S. Folco,7
+BR,3,Lucilene Anatriello,7
+BR,5,Carlo Lazzeri,6
+BS,1,Ratish K. Karna,1
+BS,1,Christopher C. Wilmot,1
+BS,1,Hanafy E. Maleis,1
+BS,1,Jane Marie Siebels,1
+BY,1,Alexander Zuikevich,2
+BY,2,Alexandr Bolotin,1
+BY,2,Anatoly Zharin,1
+BY,2,Alexei Magonov,1
+BY,2,Ilya Basiuk,1
+BY,2,Eugeniy Troyan,1
+BY,2,Dmitriy Bobrovnichiy,1
+BY,2,Vitaliy Borodovsky,1
+BY,2,Vladimir N. Linev,1
+BZ,1,Douglas Spadotto,1
+CA,1,Mark A. Smith,274
+CA,2,Jianglei Ma,37
+CA,3,Wen Tong,27
+CA,4,Peiying Zhu,25
+CA,4,Juan Manuel Cruz-Hernandez,25
+CD,1,Koichi Hirata,1
+CD,1,Elias Suokas,1
+CH,1,Johann von der Heide,12
+CH,2,Nikolas Ioannou,11
+CH,2,Roman A. Pletka,11
+CH,4,Patrick A.C. Gane,10
+CH,4,Lukas Czornomaz,10
+CL,1,Maria Pilar Banados,6
+CL,2,Axel Lovengreen Ferreira,4
+CL,2,Rodrigo Arturo Infante Espineira,4
+CL,4,Rodrigo Infante,3
+CL,4,Maria Pilar Banados Ortiz,3
+CL,4,Alejandra Andrea Salgado Rojas,3
+CM,1,Osamu Nakayama,7
+CM,1,Masaaki Tabata,7
+CM,3,Yasuo Omori,6
+CM,4,Toshiyuki Sasaki,5
+CM,4,Tatsuya Yamanaka,5
+CM,4,Tsutomu Sakata,5
+CN,1,Qiuming Liu,55
+CN,2,Xue Dong,43
+CN,3,Yang Liu,34
+CN,3,Lei Zhang,34
+CN,5,Shou-Shan Fan,33
+CO,1,Camilo Herrera Valenzuela,10
+CO,2,Henry Belalcázar Valencia,8
+CO,3,Camilo Herrera,3
+CO,3,Camilo Herrera V.,3
+CO,5,Camilo Alejandro Chivatá Romero,2
+CO,5,Julio Amador,2
+CO,5,Reinaldo Saavedra,2
+CR,1,Claude Hope,39
+CR,2,"Chester Skotak, Jr.",31
+CR,3,Mario Guillen,25
+CR,4,Marvin Gonzalez Villegas,14
+CR,5,Folkert Hoekstra,13
+CR,5,Rolando Solano Ramirez,13
+CU,1,Sonia Gonzalez Blanco,1
+CU,1,Viviana Falcon Cama,1
+CU,1,Vivian Huerta Galindo,1
+CU,1,Karen ÁLVAREZ PÉREZ,1
+CU,1,Mariela Vazquez Castillo,1
+CU,1,Jose Enrique Montero Casimiro,1
+CU,1,Luis Javier González López,1
+CU,1,Maria del Mar Inda Perez,1
+CU,1,Alexis Yero Díaz,1
+CU,1,Alejandro Miguel Martin Dunn,1
+CU,1,Hilda Elisa Garay Perez,1
+CU,1,Dianne Pupo Gómez,1
+CU,1,Glay Chinea Santiago,1
+CU,1,Gabriel J. MARQUEZ PERERA,1
+CU,1,Henry R. Thresh,1
+CU,1,Osvaldo Reyes Acosta,1
+CU,1,Mónica Sarría Núñez,1
+CU,1,Osmany Guirola Cruz,1
+CU,1,Rocío Garateix Suárez,1
+CU,1,Ricardo de la C. Silva Rodriguez,1
+CY,1,Anthony C. M. Griffiths,3
+CY,2,Samo Login,2
+CY,3,Slobodan Ninkov,1
+CY,3,Stephen John McLoughlin,1
+CY,3,Athinodoros S. Georghiades,1
+CY,3,Aleksandar Bozic,1
+CY,3,Andreani Odysseos,1
+CY,3,Anastasios Keramidas,1
+CY,3,Yury Anatolievich Popov,1
+CY,3,Julius Georgiou,1
+CY,3,Jesper Skriver,1
+CY,3,Nicolas Marcou,1
+CY,3,Maxim Gutchenko,1
+CY,3,Michalakis Averkiou,1
+CY,3,Dimitris Koulakiotis,1
+CZ,1,Jan Zima,16
+CZ,1,Jaroslav Tupy,16
+CZ,1,Otto Louda,16
+CZ,4,Vojtech Benetka,8
+CZ,5,Michal Andrusiv,7
+CZ,5,Radek Cerny,7
+CZ,5,Filip Nguyen,7
+DE,1,Nils Klemm,419
+DE,2,Tobias Dümmen,369
+DE,3,"Reinhold Holtkamp, Sr.",210
+DE,4,Josef Heuger,177
+DE,5,Tim-Hermann Kordes,170
+DJ,1,Moussa Mahdi Ahmed,1
+DK,1,Mogens Nyegaard Olesen,701
+DK,2,L. Pernille Olesen,196
+DK,3,Knud Jepsen,80
+DK,4,Bjarne Nyholm Larsen,59
+DK,5,Pernille Olesen,57
+DO,1,Carlos Antonio Castillo Pimentel,1
+DZ,1,Mohamed Mokrane,1
+DZ,1,Djamel Mekimah,1
+EC,1,Clarisse Ullrich,8
+EC,2,Maria Elena Guerrero,3
+EC,3,Edgar Ojeda,1
+EC,3,Yadira Ordonez,1
+EC,3,Omar Malagon,1
+EC,3,Patricio Montalvo,1
+EE,1,Aili Kivistik,11
+EE,2,Mika Lokkinen,3
+EE,2,Yoshihiko Sato,3
+EE,4,Devid Liik,2
+EE,4,Ahto Buldas,2
+EE,4,Laur Läänemets,2
+EE,4,Marek Laasik,2
+EE,4,Mihails Velenko,2
+EE,4,Sergei Zolotarjov,2
+EG,1,Ossama Emam,4
+EG,2,Sherif Ali,3
+EG,2,Sara A. Noeman,3
+EG,2,Ayman S. Hanafy,3
+EG,2,Mariam Moustafa Reda AbdALLAH El-Tantawi,3
+ES,1,Alexandre Pierron-Darbonne,26
+ES,1,Michael S. Dobres,26
+ES,3,Luis Rallo Romero,21
+ES,3,Diego Barranco Navero,21
+ES,5,Jose María Gómez Porras,20
+ES,5,Pedro Valverde Caballero,20
+ES,5,Concepción Muñoz Díez,20
+ES,5,Carlos Trapero Ramírez,20
+FI,1,Esa Tapani Tiirola,17
+FI,2,Kari Juhani Hooli,12
+FI,3,Miska Hannuksela,11
+FI,4,Antti Eronen,10
+FI,4,Kari Pekka Pajukoski,10
+FO,1,Bergur Vinther,1
+FR,1,Alain A. Meilland,276
+FR,2,Arsene Maillard,134
+FR,3,Laurence Maillard,130
+FR,4,Nicole Barberet,55
+FR,5,Marie L. Meilland,51
+GB,1,Peter Wain,108
+GB,2,David C. H. Austin,103
+GB,3,Raymond J. Evison,97
+GB,4,Leonard H. Shoesmith,66
+GB,5,David William Kerley,48
+GE,1,Zemphira Alavidze,1
+GE,1,Ramaz Katsarava,1
+GH,1,Manabu Yoshida,1
+GH,1,Kwabena Tufuor,1
+GI,1,Svetlana Astakhova,1
+GI,1,Robert James Mark Hain,1
+GR,1,Georgios Georgakis,4
+GR,1,Dimitrios Efthimiadis,4
+GR,3,Harry Contopanagos,3
+GR,3,Apostolos Dailianas,3
+GR,3,Apostolis Salkintzis,3
+GT,1,Joseph Christian Rossell,1
+GT,1,Pedro Rendon,1
+GT,1,Roberto Castañeda Solares,1
+GW,1,János Baji-Gál,1
+GY,1,Billy Summer,1
+HN,1,Juan Fernando Aguilar Morán,7
+HN,2,Phillip Ray Rowe,4
+HN,3,Roberto Antonio Young-Bustillo,2
+HN,3,Douglas Neptalí Cárdenas-Cárdenas,2
+HN,3,Fernando Alberto Molina-Salinas,2
+HR,1,Darko Hlusicka,1
+HR,1,Ante CAMBER,1
+HR,1,Ana Stanisic,1
+HR,1,Boris Pervan,1
+HR,1,Adam Hedi,1
+HR,1,Anita Cazin,1
+HR,1,Marinko Kovacic,1
+HR,1,Marko VIDOVIC,1
+HR,1,Marinko Markic,1
+HR,1,Kresimir Mestric,1
+HR,1,Josko Deur,1
+HR,1,Maja Pucic Bakovic,1
+HR,1,Marko Baus,1
+HR,1,Vedran Novoselac,1
+HR,1,Vladimir Katic,1
+HR,1,Tomislav Devcic,1
+HR,1,Slobodan Vukicevic,1
+HR,1,Viktor Braut,1
+HR,1,Tonko Drazic,1
+HR,1,Vedran Kovac,1
+HR,1,Zrinka Gavran,1
+HR,1,Zelimir Loncar,1
+HR,1,Hrvoje Zeba,1
+HR,1,Igor Stanisljevic,1
+HR,1,Ivor Zidaric,1
+HR,1,Ivan Trgovcic,1
+HR,1,Frano Vuckovic,1
+HR,1,Gordan Lauc,1
+HR,1,Eugen Gervais,1
+HR,1,Nikola GMAJNIC,1
+HR,1,Matija Radeljic,1
+HR,1,Mirko Coric,1
+HR,1,Ozren Milazzi,1
+HU,1,Neil Sondhi,12
+HU,2,Geza Szabo,4
+HU,3,Gyula Dekany,3
+HU,3,Marton Gyori,3
+HU,3,Jósef Retkes,3
+HU,3,Peter Szilagyi,3
+HU,3,Zoltán Richárd Turányi,3
+ID,1,Gregori Garnadi Hambali,24
+ID,2,Kusuma Adi Ningrat,3
+ID,3,Takeshi Yasui,2
+ID,4,Rudi Wigianto,1
+ID,4,Tjoe Foeng Jin,1
+ID,4,Stanislav Kabele,1
+ID,4,Tri Agus Wibowo,1
+ID,4,Sofyan Adiwinata,1
+ID,4,Haryanto Wardoyo,1
+ID,4,Hardianto Kamarga,1
+ID,4,Erwan Francois Marie Postic,1
+ID,4,Erik Mussche,1
+ID,4,Isabelle Freiin Von Richthofen,1
+ID,4,Gunarto Wibowo,1
+ID,4,Dragos Dascalita,1
+ID,4,Frantisek Jaros,1
+ID,4,Zdenek Svec,1
+ID,4,Yulia Natilova,1
+ID,4,Debie Agung Setiawan,1
+ID,4,Ashar Fuadi,1
+ID,4,Anupam Gohel,1
+ID,4,Chandra Gunawan Hendarto,1
+ID,4,Bobby Hadipraja,1
+ID,4,Ctibor Doudlebsky,1
+ID,4,Bohumir Brozek,1
+ID,4,Lie Gendo,1
+ID,4,Kong S. Seng,1
+ID,4,Mingmin Wan,1
+ID,4,Mustanir,1
+IE,1,Liam Harpur,17
+IE,2,Patrick J. O'Sullivan,16
+IE,3,Jonathan Dunne,12
+IE,4,Pierre Jean-Marie Bernard Raboisson,11
+IE,5,Pat Fitzgerald,10
+IE,5,John Barrett,10
+IE,5,Derek Turnbull,10
+IL,1,Gavriel Danziger,211
+IL,2,Gabriel Danziger,163
+IL,3,Michael Tsirkin,44
+IL,4,Klara Dehan,41
+IL,5,Omer Tripp,22
+IM,1,James Garritt,1
+IM,1,Ivo Weevers,1
+IM,1,Ivanka Majic,1
+IM,1,Mika Meskanen,1
+IM,1,Mark Shuttleworth,1
+IN,1,Sarbajit K. Rakshit,53
+IN,2,Ashish Hansoti,22
+IN,2,Parthasarathy Mukundan,22
+IN,4,Vijay Ekambaram,19
+IN,5,Suman Preet Singh Khanuja,18
+IR,1,Ali S. Sadri,4
+IR,2,Amir Hossein Bornaee,2
+IR,2,Alimorad Rashidi,2
+IR,2,Toshikage Asakura,2
+IR,2,Hiroshi Hosoda,2
+IR,2,Mahshad Alaei,2
+IR,2,Masoud Valinejadshoubi,2
+IS,1,Grimur Jonsson,4
+IS,2,Egill Sveinbjorn Egilsson,3
+IS,2,Olafur Freyr Halldorsson,3
+IS,2,Sverrir Olafsson,3
+IS,2,Larus Gunnsteinsson,3
+IS,2,Andrew Bache,3
+IS,2,Arinbjörn Viggo Clausen,3
+IS,2,David Sandahl,3
+IT,1,Antonella Capo,35
+IT,2,Michelangelo Leis,34
+IT,3,Alessio Martinelli,28
+IT,4,Alberto Biancheri,23
+IT,5,Johannes Nebelmeir,20
+JE,1,Alfred E. Bruns,1
+JE,1,Lawrence D. Woolf,1
+JE,1,Karl J. Simpson,1
+JM,1,Errol Anthony McGhie,2
+JM,2,Howard Chin,1
+JO,1,Mohammed Sammour,3
+JO,2,Omar Hiari,1
+JO,2,Mohammed Rasool Qtaishat,1
+JO,2,Raed Mesleh,1
+JO,2,Rana M. Obaidat,1
+JO,2,Mhd Adel Ghassan Al Qodmani,1
+JO,2,Masaki Fujikane,1
+JO,2,Rakan Elias Jamil Alhourani,1
+JO,2,Fahed Awad,1
+JO,2,Adnan Badwan,1
+JO,2,Ahmed Bader,1
+JO,2,Sarah Hanai Homsi,1
+JP,1,Shunpei Yamazaki,176
+JP,2,Ushio Sakazaki,162
+JP,3,Kiyoshi Miyazaki,113
+JP,4,Tomoya Misato,81
+JP,5,Takeshi Kanaya,80
+KE,1,Komminist Weldemariam,7
+KE,2,Jesse Keith Barton Moore,1
+KE,2,Kenneth Langat Cheulule,1
+KE,2,Kumud Shah,1
+KE,2,Richard M. S. Mulwa,1
+KE,2,Sarah Wambui Kahihu,1
+KE,2,Simone Fobi,1
+KE,2,Samuel Karumba,1
+KE,2,David W. Kaguma,1
+KH,1,Bunika San,1
+KH,1,Su Io Lam,1
+KP,1,Rooney Kim,3
+KP,2,Glen Kang,2
+KP,3,Kyong Min Shin,1
+KP,3,Jin-Bum Hwang,1
+KP,3,Dai Nakajima,1
+KP,3,Byung Kwan Kang,1
+KR,1,Hanbyul Seo,92
+KR,2,Woosuk KO,71
+KR,3,In Hwan Choi,67
+KR,3,Jin Woo Kim,67
+KR,5,Sungryong Hong,65
+KW,1,Mohan Singh Rana,3
+KW,2,Faisal S. Alhumaidan,2
+KW,3,Ghufran Abdullah Al-Shiridah,1
+KW,3,Montaha H. A. Behbehani,1
+KW,3,Maytham H. Safar,1
+KW,3,Meena Marafi,1
+KW,3,Khaled Mahdi,1
+KW,3,Sadeq Ahmad Qasem,1
+KW,3,Areej Helmi Hamouda,1
+KW,3,Abdulaziz Alrumaih,1
+KW,3,Aimen Hussein Amer,1
+KY,1,Chih-Wei Hsiung,2
+KY,2,David Lickrish,1
+KY,2,Robert Michael Hamaty,1
+KY,2,Richard D. Pierce,1
+KY,2,Wang Yi,1
+KY,2,Jens Ole Sorensen,1
+KY,2,Joram Agar,1
+KY,2,Jie Wu,1
+KZ,1,Anatoliy Galkin,1
+KZ,1,Alexandr Klepikov,1
+KZ,1,Alexandr Blynskiy,1
+KZ,1,Turgynbek Tolebayev,1
+KZ,1,Nadezhda Bachilova,1
+LA,1,Naiqi Wu,2
+LA,1,Lian Xiang Luo,2
+LB,1,Ahmad Fares,2
+LB,2,Badawi Yamine,1
+LB,2,Arthur J. Daou,1
+LB,2,Nizar Youssef Mehio,1
+LB,2,Imad Maalouf,1
+LB,2,Hadi Murr,1
+LB,2,Elias Bachaalani,1
+LB,2,Karim M. Chehayeb,1
+LB,2,Samer Salam,1
+LI,1,Volker Rheinberger,2
+LI,1,Sebastian Forte,2
+LI,1,Norbert Moszner,2
+LI,1,Wolfram Höland,2
+LI,5,Oliver Gstoehl,1
+LI,5,Robert Galehr,1
+LI,5,Oskar Untermarzoner,1
+LI,5,Otto Hofer,1
+LI,5,Thomas Foser,1
+LI,5,Alexander VON LIECHTENSTEIN,1
+LI,5,Arnd Peschke,1
+LI,5,Katherine Broder,1
+LI,5,Markus Niederlechner,1
+LI,5,Marcel Lorenz,1
+LI,5,Knut Miller,1
+LI,5,Jurgen Weichart,1
+LI,5,Marko Curlic,1
+LI,5,Lukas Flatz,1
+LI,5,Jong-Won Shin,1
+LI,5,Kurt Ruhm,1
+LI,5,Hansjörg Sulser,1
+LI,5,Helmut Kirmsze,1
+LI,5,Emmanuel Turlot,1
+LK,1,Don Damith Nadishan Colambathanthrige,1
+LK,1,Indrajith Kuruppu,1
+LK,1,Sisitha Sudarshana,1
+LK,1,Wasath Viraja Mudalige,1
+LK,1,Nadeekha Michelle Leanage,1
+LK,1,Nedra Karunaratne,1
+LK,1,Mohamed Fazal Abdeen,1
+LK,1,Jian Wu,1
+LK,1,Athawuda Arachchige Ranthi Manahari Dias,1
+LK,1,Agampodi Sunil Shantha Mendis,1
+LR,1,David P. Kosow,1
+LR,1,Margaret C. Marlow,1
+LT,1,Kestutis Barkauskas,1
+LT,1,Kipras Mancevi{hacek over (c)}ius,1
+LT,1,Lolita Zaliauskiene,1
+LT,1,Tadas Povilaitis,1
+LT,1,Saulius Grigalevi{hacek over (c)}ius,1
+LT,1,Saulius Klimasauskas,1
+LT,1,Zdislav Stasevskij,1
+LT,1,Gintare Kru{hacek over (c)}aite,1
+LT,1,Edita Kriukiene,1
+LT,1,Antanas Gadeikis,1
+LT,1,Darius Ivanauskas,1
+LT,1,Arunas Lagunavicius,1
+LT,1,Arvydas Lubys,1
+LT,1,Mindaugas Kriauciunas,1
+LT,1,Remigijus Skirgaila,1
+LU,1,Kanwar Bharat Singh,6
+LU,2,Marc Engel,2
+LU,2,Paul Tockert,2
+LU,2,Pierre Glaesener,2
+LU,2,Daniel Marchal,2
+LU,2,Jean-Claude Schmitz,2
+LU,2,Eric Huebsch,2
+LV,1,Regina Renhofa,1
+LV,1,Pyry Taanila,1
+LV,1,Paul Pumpens,1
+LV,1,Zigmars Andzans,1
+LV,1,Wulf Harder,1
+LV,1,Elina Jaschenko,1
+LV,1,Ivars Kalvins,1
+LV,1,Irina Shestakova,1
+LV,1,Ilona Domracheva,1
+LV,1,Indulis Cielens,1
+LV,1,Ilze Adlere,1
+LV,1,Gunars Duburs,1
+LV,1,Laura Krasnova,1
+LV,1,Aivars Krauze,1
+LV,1,Signe Grinberga,1
+MA,1,Mustapha Zemzami,4
+MA,2,Nabil Madrane,3
+MA,3,Abdelali El Tahiri,2
+MA,4,Ahmed Reda Chami,1
+MA,4,Samir Tamri,1
+MA,4,JalalEddine Essalik,1
+MA,4,El Bachir Nadori,1
+MA,4,Jean Vincent,1
+MA,4,Yahia Cherrah,1
+MA,4,Rafik Errakhi,1
+MA,4,Mohammed-Saad Boutayeb,1
+MC,1,Massimo Losio,1
+MC,1,Dorothee Bernini,1
+MC,1,Gianluca Malaguti,1
+MC,1,Jean-Raymond Boulle,1
+MC,1,Alexander Rübben,1
+MD,1,Nicolai Boguslavschi,1
+MD,1,Sergiu Vrabie,1
+MK,1,Saso Koceski,1
+MK,1,Filip Shteriev,1
+ML,1,Esther Chee Hsiang Cheng,1
+MM,1,Aung Min,1
+MM,1,Zin Min Aye,1
+MM,1,Lukas Werner,1
+MT,1,Klas Norden,2
+MT,2,Ivan Ellul,1
+MT,2,Federico Rodriguez,1
+MT,2,Claus Dreher,1
+MT,2,Christopher Brincat,1
+MU,1,Takuya Handa,2
+MU,2,Tomohiro Nishimura,1
+MU,2,Sho Sato,1
+MU,2,Toru Iwanaga,1
+MU,2,Daisuke Sano,1
+MU,2,Masafumi KOKUBO,1
+MU,2,Masahide Kawabata,1
+MU,2,Mary Cindy Ah Kioon,1
+MU,2,Kiyoshi Suehara,1
+MU,2,Kenichiro Yoshida,1
+MU,2,George Ernest Bester,1
+MX,1,Jorge Rodriguez Alcazar,12
+MX,2,Luis V. Ramirez Chaidez,5
+MX,2,Luca D. Farioli Brioschi,5
+MX,2,Jorge Ancheyta Juarez,5
+MX,2,Missael Bonifacio Romero Escobedo,5
+MX,2,Omar Carrillo Mendoza,5
+MX,2,Emmanuel Barajas Gonzalez,5
+MX,2,Hector Cordourier Maruri,5
+MY,1,Yen Hsiang Chew,6
+MY,2,Ravigadevi Sambanthamurthi,5
+MY,3,Yew Ai Tan,4
+MY,3,Chee Hak Teh,4
+MY,3,Kevin Len-Li Lim,4
+MY,3,Eng Huat Goh,4
+MY,3,Teck Sim Lee,4
+NG,1,Ikuo Akitsuki,1
+NG,1,Takayuki Izumi,1
+NG,1,Olakunle H. Olamuyiwa,1
+NG,1,Obinna Hyacinth Ehirim,1
+NG,1,Nanjun Zhang,1
+NL,1,Martinus Nicolaas Gerardus Van Swieten,246
+NL,2,Arjan Koot,200
+NL,3,René Schoone,188
+NL,4,Niels Arts,151
+NL,5,Jan Van Dijk,127
+NO,1,Trond Jarle Pedersen,9
+NO,2,Vemund Kval Bakken,8
+NO,3,Bjørn Dag Johnsen,7
+NO,4,Jorn Nystad,6
+NO,5,Andreas Due Engh-Halstvedt,5
+NO,5,Stian Hegna,5
+NP,1,Hans Hede,1
+NZ,1,Samuel D. McGredy,28
+NZ,2,Keith Hammett,26
+NZ,3,Allan G. White,21
+NZ,4,Sam McGredy,20
+NZ,4,Donald Skelton,20
+OM,1,Sidgi Syed Anwer Abdo Hasson,1
+OM,1,Ali A. H. Al-Jabri,1
+PA,1,Clay Perreault,2
+PA,2,Adolfo Arguello Lacayo,1
+PA,2,Carolina T. De Carney,1
+PA,2,Roberto Villa,1
+PA,2,Julio Toro Silva,1
+PA,2,Ezequiel Ruiz Rodriguez,1
+PA,2,Gregorio Reid,1
+PE,1,Arto Lehtiniemi,11
+PE,2,Jari Vikberg,10
+PE,3,Fredrik Lindholm,7
+PE,4,Milagros Janet Granda Mogollon De Montoya,6
+PE,4,Jorge David Romero Pajares,6
+PE,4,Luis Jose Montgomery Taboada,6
+PE,4,Kimberlayn Maria Apsara Sanabria Aguilar,6
+PG,1,Saif Uddin,1
+PG,1,Nicholas A. Rounds,1
+PH,1,Katrina Rosit Lactuan,6
+PH,2,Vijay Phadke,5
+PH,3,Jefferson Talledo,4
+PH,3,Marlon B. Verdan,4
+PH,5,Jonathan Almeria Noquil,2
+PH,5,Jonathan Ross Bernardo Fauni,2
+PH,5,John E. Heckman,2
+PH,5,Kirk Herbert Raney,2
+PH,5,Tomihito Doi,2
+PH,5,Peter Ramos Yeo,2
+PH,5,Argel Adarlo,2
+PH,5,Aldimarl Mantilla Navarro,2
+PH,5,Alvin Anonuevo Manlapat,2
+PH,5,Cyrill C. Ponce,2
+PH,5,Ian Victor Pasion Beleno,2
+PH,5,Francis Laxamana,2
+PH,5,James Sigamani,2
+PH,5,Jarmie De La Cruz Espuerta,2
+PH,5,Yancy Fontanilla Boncato,2
+PK,1,Fahad Ali Rabbani,2
+PK,2,Hamad Raza Jamshed,1
+PK,2,Hazrat Hussain,1
+PK,2,Faiza Saleem,1
+PK,2,Jehanzeb Masud,1
+PK,2,Jonathan Thomas Johnson,1
+PK,2,Muhammad Murtaza,1
+PK,2,Mohsen Ali,1
+PK,2,Nadeem Tariq,1
+PK,2,Muhammad Talal Ibrahim,1
+PK,2,Muhammad Umer Kakli,1
+PK,2,Rehan Hafiz,1
+PK,2,Mudassir Ahmed,1
+PK,2,Naeem Uddin,1
+PK,2,Muhammed Arshad,1
+PK,2,Asif Riaz,1
+PK,2,Abdul Rauf Shakoori,1
+PK,2,Ashar Rasul,1
+PK,2,Aasim Shahzad,1
+PK,2,Arshad Ali,1
+PK,2,Affan Akmal,1
+PK,2,Waqas Muddasir,1
+PK,2,Saleh Saeed,1
+PK,2,Shagufta Naz,1
+PL,1,Szczepan Marczynski,8
+PL,2,Konrad K. Skibski,5
+PL,3,Grzegorz Krukiewicz-Gacek,4
+PL,3,Michal Sznajder,4
+PL,3,Piotr Kania,4
+PN,1,Herbert R. Appell,1
+PT,1,Nuno Alexandre Esteves Reis,4
+PT,2,Nuno Alexandre Tavares Coutinho,3
+PT,2,Tania Moura Pires De Andrade Tenreiro,3
+PT,2,Tomas Nylander,3
+PT,2,André Amorim de Faria Cardote,3
+PT,2,Henrique Cabral,3
+PY,1,Edgar Ramon Alvarez Britos,2
+PY,2,Stephen F. McJones,1
+QA,1,Martin Vad Bennetzen,3
+QA,1,Mohamed Hefeeda,3
+QA,3,Mahmoud M. Khader,2
+QA,3,Marco Stura,2
+QA,5,Magdy Walid,1
+QA,5,Khaled M. Diab Diab,1
+QA,5,Mariam Al Ali Almaadeed,1
+QA,5,Kareem Darwish,1
+QA,5,Mdmonsur Alam,1
+QA,5,Nouar Amor Tabet,1
+QA,5,Noorunnisa Khanam Patan,1
+QA,5,Hassan S. Bazzi,1
+QA,5,Hamid Menouar,1
+QA,5,Subin Sundaran Baby Sarojam,1
+QA,5,Shehab Ahmed,1
+QA,5,Abdurrahman Abdallah Khalidi,1
+QA,5,Ahmed Abdelsadek Ahmed,1
+QA,5,Deepak Kaura,1
+QA,5,Ahmed Elserougi,1
+QA,5,Barry McCallum,1
+QA,5,Ahmed Massoud,1
+RO,1,Razvan-Tudor Stanescu,4
+RO,2,Radu Mihai Iorga,3
+RO,2,Corneliu-Ilie Calciu,3
+RO,2,George-Lucian Capraru,3
+RO,5,Cornel Cobianu,2
+RO,5,Mihai Brezeanu,2
+RO,5,Sorin Alexandru Bora,2
+RO,5,Sandor Lukacs,2
+RS,1,Biljana Bozanic Tanjga,5
+RS,2,Aljosa Obuljen,4
+RS,2,Milos Raskovic,4
+RS,2,Milos Lazarevic,4
+RS,2,Milan Sesum,4
+RU,1,Alexei Davydov,10
+RU,2,Alexey Khoryaev,9
+RU,3,Alexander Maltsev,7
+RU,4,Anatoly N. Verenchikov,5
+RU,4,Stanislav S. Protassov,5
+RU,4,Stanislav Protasov,5
+RU,4,Nikolay Dobrovolskiy,5
+SA,1,Omer Refa Koseoglu,10
+SA,2,Muataz Ali Atieh,6
+SA,3,Milind M. Vaidya,5
+SA,3,Ki-Hyouk Choi,5
+SA,3,Zeeshan Nawaz,5
+SD,1,Mohammed Abdeen Mohammed Hassan,1
+SD,1,Mohamed Khalifa,1
+SE,1,Muhammad Kazmi,35
+SE,2,Stefan Parkvall,24
+SE,3,Iana Siomina,19
+SE,4,Heiko Purnhagen,18
+SE,5,George Jöngren,17
+SE,5,Lars Villemoes,17
+SG,1,Lei Wang,22
+SG,2,Chong Soon Lim,17
+SG,3,Moonock Yang,14
+SG,4,Serguei M. Beloussov,13
+SG,5,Viktor Wahadaniah,11
+SG,5,Thiow Keng Tan,11
+SI,1,Vinko Kunc,4
+SI,2,Marko Mlinar,3
+SI,2,Joze Pececnik,3
+SI,4,Maksimiljan Stiglic,2
+SI,4,Marko Usaj,2
+SI,4,Kosta Kovacic,2
+SI,4,Toni Petrovic,2
+SI,4,Valter Svara,2
+SI,4,Matjaz Vencelj,2
+SI,4,Andrej Kosicek,2
+SI,4,Danijel Kozlovic,2
+SI,4,Gregor Kosec,2
+SI,4,Hrvoje Petkovic,2
+SK,1,Lubos Brvenik,2
+SK,1,Ivan Lacko,2
+SK,1,Peter Gogola,2
+SK,1,Michal Mokos,2
+SK,1,Peter Psenak,2
+SM,1,"Stefan T. Epure, deceased",1
+SV,1,Erlinda Handal Vega,1
+SV,1,Carmen Elena Arias,1
+SV,1,Jorge Manuel Garcia,1
+SY,1,Khalidah Al Dalama,1
+SY,1,Mohammad G H. Alfailakawi,1
+SY,1,Naieef F. N. M. D. Al-Mutairi,1
+SY,1,Anas Al Afandi,1
+SY,1,Ahmad Rashed Edlbi,1
+SY,1,Abdullatif E. A. H. Al-Terki,1
+SY,1,Hessah Saud Al Sulatieen,1
+TH,1,Thumrong Suphachadiwong,84
+TH,2,Troy Thorup,12
+TH,3,Philip Scott Lyren,9
+TH,4,Kanachana Khemakongkanond,8
+TH,5,Saravuth Sirinorakul,7
+TH,5,Chalermsri Nontaswatsri,7
+TN,1,Emna Guerfala,1
+TR,1,Umit Cifter,3
+TR,2,Turan Ozturk,2
+TR,2,Selami Demirci,2
+TR,2,Taha Demiroez,2
+TR,2,Fikrettin SAHIN,2
+TR,2,Fuat Burtan Arkan,2
+TR,2,Aysegul DOGAN,2
+TR,2,Alper Yegin,2
+TR,2,Ali C. Begen,2
+TR,2,Akif Ekin,2
+TR,2,Yavuz Battal,2
+TR,2,Özlem Toker,2
+TR,2,Oguz Celikel,2
+TR,2,Nazife Arabacioglu,2
+TT,1,Mark E. Lee Lum,1
+TT,1,Laurice Phillips,1
+TT,1,Paul Edward Bowden,1
+TT,1,Dolly Nicholas,1
+TT,1,Duc The Kieu,1
+TW,1,Chen-Hua Yu,53
+TW,2,Yeong-Ming Chang,43
+TW,3,Hsien-Wei Chen,35
+TW,4,Wei-Yu Chen,32
+TW,4,Kuo-Cheng Ching,32
+TZ,1,William M. Henderson,2
+TZ,2,Christine Brandsma,1
+TZ,2,Torsten Doenhoff,1
+UA,1,Dmytro Ivanchykhin,3
+UA,2,Ievgen Mastierov,2
+UA,3,Igor Oleksandrovych Ulyanov,1
+UA,3,Iryna Bandura,1
+UA,3,Dmytro Bekinin,1
+UA,3,Ievgen Verzun,1
+UA,3,Eugene Medvedenko,1
+UA,3,Igor Ivanovich Kornienko,1
+UA,3,Ievgen Krasichkov,1
+UA,3,Ihor Korsun,1
+UA,3,Iurii Kolomiichuk,1
+UA,3,Gennadiy A. Voropayev,1
+UA,3,Simonov Veniamin Serhiovych,1
+UA,3,Volodymyr Diomydovych Ryzhikov,1
+UA,3,Volodymyr Kopan,1
+UA,3,Sergei Vyacheslavovich Naydenov,1
+UA,3,Vladyslava Kovalska,1
+UA,3,Sergii Kurstak,1
+UA,3,Sergiy M. Yarmoluk,1
+UA,3,Vitold Khvostov,1
+UA,3,Vasyl Molebny,1
+UA,3,Valerii Nebesnyi,1
+UA,3,Viktor Babkov,1
+UA,3,Taras Hrabovenskyy,1
+UA,3,Sergii Nechuiviter,1
+UA,3,Sergii Samchuk,1
+UA,3,Serdyuk Serhiy Mykolayovych,1
+UA,3,Oleg Puzanov,1
+UA,3,Oleksii Korbachevskyi,1
+UA,3,Oleksandr Balakin,1
+UA,3,Olga Nikolaevna Sizonenko,1
+UA,3,Oleh Hordiichuk,1
+UA,3,Oleg Medvedev,1
+UA,3,Oleksandr Galaka,1
+UA,3,Oleksii Chvala,1
+UA,3,Roman Davydovskiy,1
+UA,3,Osypov Oleksii Serhiovych,1
+UA,3,Oleksandr Holub,1
+UA,3,Oleksandr SHCHUR,1
+UA,3,Petro Shegedin,1
+UA,3,Oleh Derevenko,1
+UA,3,Mykhaylo Losytskyy,1
+UA,3,Yuri Shovkoplias,1
+UA,3,Yurii Snisarenko,1
+UA,3,Yurii Yenko,1
+UA,3,Andrii Fesenko,1
+UA,3,Andrii Skriabin,1
+UA,3,Boris Ivanovich Pavlyk,1
+UA,3,Abdallah Nail Ahmad Amin,1
+UA,3,Andriy Yarosh,1
+UA,3,Boris Viktorovich Grynyov,1
+UA,3,Anatoliy Balanda,1
+UA,3,Anatoliy Anatolievich Novikov,1
+UA,3,Alexander Ivanovich Vovchenko,1
+UA,3,Andriy Sibirny,1
+UA,3,Alexander Klochko,1
+UA,3,Andriy Ryshtun,1
+UA,3,Kateryna Volkova,1
+UA,3,Kostyantyn Hlushchenko,1
+UA,3,Kostyantyn Milshteyn,1
+UA,3,Kostyantyn Dmytruk,1
+UA,3,Marta Semkiv,1
+UG,1,Akira Sakamoto,11
+UG,2,Hiroshi Shibata,5
+UG,3,Haruyuki Nishijima,4
+UG,3,Masaki Ninoyu,4
+UG,5,Masashi Yamasaki,3
+UG,5,Makoto Taniguchi,3
+unknown,1,Hiromasa Yamauchi,4
+US,1,Hans A Hansen,573
+US,2,Cornelis P. VandenBerg,434
+US,3,Gary Neil Zaiger,395
+US,4,Grant Gene Zaiger,391
+US,5,Leith Marie Gardner,374
+UY,1,Federico Bana Mullin,1
+UY,1,Ignacio Carrera,1
+UY,1,Jaime Boxer,1
+UY,1,Fabian Silva,1
+UY,1,Fernando Goni,1
+UY,1,Gonzalo Ferreira de Mattos,1
+UY,1,Esteban Vicente,1
+UY,1,Ruben Garcia Marroche,1
+UY,1,Matías González,1
+UY,1,Natalia Munoz,1
+UY,1,Rosina Dapueto,1
+UY,1,Carlos Batthyány,1
+UY,1,Carlos Escande,1
+UY,1,Ariel Manzzioni,1
+UY,1,Andres Bianco de Olea,1
+UY,1,Daniel Drexler,1
+UY,1,Ana Arruabarrena,1
+UY,1,Alberto Fernandez Dell'Oca,1
+UY,1,Marisa Pedemonte Benvenuto,1
+UY,1,Joanna Lado,1
+UY,1,Mario Giambiasi,1
+UY,1,Jorge Rodriguez Duarte,1
+UY,1,Jose Alejandro Chabalgoity,1
+UZ,1,Nariman Gulyamov,3
+VE,1,Hazim H. Abass,3
+VE,2,Francisco Gomez,2
+VE,3,Giancarlo Gagliardoni,1
+VE,3,Pierre Schmidt,1
+VE,3,Pedro José Puccini,1
+VE,3,Joseph P. Bailey,1
+VE,3,Andres Miguel Quesada Perez,1
+VE,3,Alonso P. Rodriguez,1
+VG,1,Dimitry Streshinskiy,1
+VN,1,Pham Ngoc Hung,4
+VN,1,Le Tuan Anh,4
+VN,3,Huynh Van Chanh,3
+VN,3,Chia-Yi Wu,3
+VN,3,Cong Nguyen,3
+VN,3,Thi Nguyen Ngoc,3
+VN,3,Tran Thi Oanh Yen,3
+VN,3,Quang Nguyen,3
+VN,3,Nguyen Nhat Truong,3
+VU,1,Charles W. Kraut,2
+VU,2,Milton C. Kintzley,1
+YE,1,Mahmood M. S. Abdullah,2
+YE,2,Fathi M. Abdullah,1
+YE,2,Adel Almorshedi,1
+YE,2,Tawfik Abdo Saleh Awadh,1
+ZA,1,Quinton Bean,26
+ZA,2,Charles Andrew de Wet,19
+ZA,3,Richard Jamieson,7
+ZA,4,Riana Kleynhans,6
+ZA,5,Gert Johannes Brits,5
+ZW,1,Mark A. Coleman,1
+ZW,1,Frederick Alexander,1

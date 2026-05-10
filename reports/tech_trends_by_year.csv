@@ -1,0 +1,248 @@
+year,patent_type,patent_count
+1976,utility,70199
+1976,reissue,419
+1976,design,298
+1976,plant,14
+1976,defensive publication,11
+1977,utility,65206
+1977,design,3926
+1977,reissue,411
+1977,plant,173
+1977,defensive publication,104
+1978,utility,66074
+1978,design,3862
+1978,reissue,375
+1978,plant,186
+1978,defensive publication,89
+1979,utility,48839
+1979,design,3119
+1979,reissue,310
+1979,plant,131
+1979,defensive publication,85
+1980,utility,61807
+1980,design,3948
+1980,reissue,290
+1980,plant,117
+1980,defensive publication,49
+1980,TVPP,1
+1981,utility,65771
+1981,design,4744
+1981,reissue,364
+1981,plant,183
+1981,defensive publication,50
+1982,utility,57874
+1982,design,4943
+1982,reissue,271
+1982,plant,173
+1982,defensive publication,31
+1983,utility,56861
+1983,design,4565
+1983,reissue,361
+1983,plant,197
+1983,defensive publication,34
+1983,TVPP,1
+1984,utility,67212
+1984,design,4939
+1984,reissue,299
+1984,plant,211
+1984,defensive publication,28
+1985,utility,71665
+1985,design,5070
+1985,reissue,271
+1985,plant,241
+1985,defensive publication,22
+1985,statutory invention registration,6
+1985,TVPP,1
+1986,utility,70863
+1986,design,5527
+1986,reissue,257
+1986,plant,224
+1986,statutory invention registration,175
+1986,defensive publication,4
+1987,utility,82943
+1987,design,5960
+1987,reissue,247
+1987,plant,228
+1987,statutory invention registration,212
+1987,defensive publication,1
+1988,utility,77936
+1988,design,5679
+1988,plant,425
+1988,reissue,243
+1988,statutory invention registration,165
+1988,defensive publication,1
+1989,utility,95566
+1989,design,6092
+1989,plant,587
+1989,reissue,317
+1989,statutory invention registration,157
+1990,utility,90421
+1990,design,8024
+1990,reissue,370
+1990,plant,318
+1990,statutory invention registration,142
+1991,utility,96561
+1991,design,9569
+1991,plant,353
+1991,reissue,264
+1991,statutory invention registration,144
+1992,utility,97473
+1992,design,9269
+1992,reissue,360
+1992,plant,321
+1992,statutory invention registration,117
+1993,utility,98385
+1993,design,10632
+1993,plant,442
+1993,reissue,330
+1993,statutory invention registration,144
+1994,utility,101695
+1994,design,11095
+1994,plant,499
+1994,reissue,318
+1994,statutory invention registration,116
+1995,utility,101432
+1995,design,11706
+1995,plant,387
+1995,reissue,314
+1995,statutory invention registration,115
+1996,utility,109654
+1996,design,11410
+1996,plant,360
+1996,reissue,278
+1996,statutory invention registration,109
+1997,utility,112020
+1997,design,11413
+1997,plant,394
+1997,reissue,276
+1997,statutory invention registration,78
+1998,utility,147576
+1998,design,14768
+1998,plant,561
+1998,reissue,298
+1998,statutory invention registration,62
+1999,utility,153592
+1999,design,14735
+1999,reissue,444
+1999,plant,421
+1999,statutory invention registration,60
+2000,utility,157595
+2000,design,17416
+2000,plant,552
+2000,reissue,525
+2000,statutory invention registration,104
+2001,utility,166158
+2001,design,16873
+2001,plant,584
+2001,reissue,480
+2001,statutory invention registration,77
+2002,utility,167400
+2002,design,15451
+2002,plant,1133
+2002,reissue,461
+2002,statutory invention registration,49
+2003,utility,169077
+2003,design,16576
+2003,plant,994
+2003,reissue,421
+2003,statutory invention registration,36
+2004,utility,164384
+2004,design,15695
+2004,plant,1016
+2004,reissue,298
+2004,statutory invention registration,20
+2005,utility,143891
+2005,design,12953
+2005,plant,716
+2005,reissue,246
+2005,statutory invention registration,23
+2006,utility,173822
+2006,design,20967
+2006,plant,1149
+2006,reissue,519
+2006,statutory invention registration,32
+2007,utility,157331
+2007,design,24063
+2007,plant,1047
+2007,reissue,508
+2007,statutory invention registration,29
+2008,utility,157788
+2008,design,25565
+2008,plant,1240
+2008,reissue,647
+2008,statutory invention registration,20
+2009,utility,167463
+2009,design,23120
+2009,plant,1009
+2009,reissue,454
+2009,statutory invention registration,6
+2010,utility,219848
+2010,design,22804
+2010,plant,982
+2010,reissue,948
+2010,statutory invention registration,17
+2011,utility,224871
+2011,design,21361
+2011,reissue,1031
+2011,plant,823
+2011,statutory invention registration,15
+2012,utility,253633
+2012,design,21959
+2012,plant,860
+2012,reissue,825
+2012,statutory invention registration,8
+2013,utility,278518
+2013,design,23478
+2013,plant,847
+2013,reissue,801
+2013,statutory invention registration,14
+2014,utility,301643
+2014,design,23666
+2014,plant,1072
+2014,reissue,627
+2014,statutory invention registration,6
+2015,utility,299382
+2015,design,26000
+2015,plant,1074
+2015,reissue,513
+2016,utility,304126
+2016,design,28886
+2016,plant,1235
+2016,reissue,427
+2017,utility,320003
+2017,design,30879
+2017,plant,1311
+2017,reissue,394
+2018,utility,308853
+2018,design,30513
+2018,plant,1208
+2018,reissue,529
+2018,statutory invention registration,1
+2019,utility,355923
+2019,design,34813
+2019,plant,1275
+2019,reissue,607
+2020,utility,353701
+2020,design,34895
+2020,plant,1398
+2020,reissue,578
+2021,utility,329097
+2021,design,33161
+2021,plant,1085
+2021,reissue,486
+2022,utility,324698
+2022,design,34167
+2022,plant,1074
+2022,reissue,478
+2023,utility,313707
+2023,design,35278
+2023,plant,689
+2023,reissue,419
+2024,utility,325602
+2024,design,46960
+2024,plant,803
+2024,reissue,487
+2025,utility,325822
+2025,design,51641
+2025,plant,819
+2025,reissue,459

@@ -1,0 +1,101 @@
+inventor_name,country,patent_count,global_rank,country_rank,pct_of_all_patents
+Mogens Nyegaard Olesen,DK,701,1,1,0.1368
+Hans A Hansen,US,573,2,1,0.1118
+Cornelis P. VandenBerg,US,434,3,2,0.0847
+Nils Klemm,DE,419,4,1,0.0818
+Gary Neil Zaiger,US,395,5,3,0.0771
+Grant Gene Zaiger,US,391,6,4,0.0763
+Leith Marie Gardner,US,374,7,5,0.073
+Tobias Dümmen,DE,369,8,2,0.072
+Scott C. Trees,US,351,9,6,0.0685
+Wendy R. Bergman,US,312,10,7,0.0609
+Lowell Glen Bradford,US,286,11,8,0.0558
+Alain A. Meilland,FR,276,12,1,0.0539
+Mark A. Smith,CA,274,13,1,0.0535
+Martinus Nicolaas Gerardus Van Swieten,NL,246,14,1,0.048
+Gavriel Danziger,IL,211,15,1,0.0412
+"Reinhold Holtkamp, Sr.",DE,210,16,3,0.041
+Mitchell E. Hanes,US,208,17,9,0.0406
+Janet N. Egger,US,206,18,10,0.0402
+Keith W. Zary,US,200,19,11,0.039
+Arjan Koot,NL,200,19,2,0.039
+Harini Korlipara,US,199,21,12,0.0388
+Chris F. Zaiger,US,196,22,13,0.0383
+L. Pernille Olesen,DK,196,22,2,0.0383
+René Schoone,NL,188,24,3,0.0367
+Josef Heuger,DE,177,25,4,0.0345
+Timothy D. Wood,US,176,26,14,0.0344
+Shunpei Yamazaki,JP,176,26,1,0.0344
+Kangguo Cheng,US,173,28,15,0.0338
+Dirk Pieters,BE,170,29,1,0.0332
+Tim-Hermann Kordes,DE,170,29,5,0.0332
+William E. Duffett,US,166,31,16,0.0324
+Gabriel Danziger,IL,163,32,2,0.0318
+Ushio Sakazaki,JP,162,33,2,0.0316
+Ruth Kobayashi,US,153,34,17,0.0299
+Niels Arts,NL,151,35,4,0.0295
+Ludwig Kientzler,DE,151,35,6,0.0295
+William A. Warriner,US,150,37,18,0.0293
+Marga Dümmen,DE,146,38,7,0.0285
+Lyndon W. Drewlow,US,143,39,19,0.0279
+Angelika Utecht,DE,142,40,8,0.0277
+Arsene Maillard,FR,134,41,2,0.0262
+Laurence Maillard,FR,130,42,3,0.0254
+Jan Van Dijk,NL,127,43,5,0.0248
+Birgit Hofmann,DE,126,44,9,0.0246
+Robert Dale Hartman,US,123,45,20,0.024
+Jacob van Andel,NL,115,46,6,0.0224
+Kiyoshi Miyazaki,JP,113,47,3,0.0221
+"Walter H. Jessel, Jr.",US,111,48,21,0.0217
+Robert Noodelijk,NL,110,49,7,0.0215
+David Cain,US,110,49,22,0.0215
+Thomas F. Carruth,US,109,51,23,0.0213
+Peter Wain,GB,108,52,1,0.0211
+Wilhelm Kordes,DE,108,52,10,0.0211
+David C. H. Austin,GB,103,54,2,0.0201
+David Lemon,US,103,54,24,0.0201
+Martin Geibel,DE,101,56,11,0.0197
+Andrew Bernuetz,AU,101,56,1,0.0197
+Henricus Godefridus Wilhelmus Stemkens,NL,100,58,8,0.0195
+Terry A. Bacon,US,100,58,25,0.0195
+Raymond J. Evison,GB,97,60,3,0.0189
+Annie Cornelia Beekenkamp,NL,97,60,9,0.0189
+Alexander Reznicek,US,97,60,26,0.0189
+Ellen van Sambeek,NL,94,63,10,0.0183
+John K. Slaughter,US,94,63,27,0.0183
+Franz Fruehwirth,US,94,63,27,0.0183
+Heinrich Westhoff,DE,92,66,12,0.018
+Hanbyul Seo,KR,92,66,1,0.018
+Roderick A. Hyde,US,88,68,29,0.0172
+Michael A. Dirr,US,86,69,30,0.0168
+Edward A. McRae,US,86,69,30,0.0168
+Ralph S. Moore,US,85,71,32,0.0166
+Henricus Cornelius Maria Jacobs,NL,85,71,11,0.0166
+F. Harmon Saville,US,84,73,33,0.0164
+Thumrong Suphachadiwong,TH,84,73,1,0.0164
+Brent Arpad Horvath,US,84,73,33,0.0164
+Mark Roland Boeder,NL,82,76,12,0.016
+Aad W. M. Verwer,NL,82,76,12,0.016
+Ike Vlielander,NL,82,76,12,0.016
+Thomas Green Ranney,US,81,79,35,0.0158
+Tomoya Misato,JP,81,79,4,0.0158
+Graham Noel Brown,AU,81,79,2,0.0158
+Takeshi Kanaya,JP,80,82,5,0.0156
+Knud Jepsen,DK,80,82,3,0.0156
+Robert Edward Lee,US,80,82,36,0.0156
+Paul M. Lyrene,US,79,85,37,0.0154
+Timothy J. Gerdts,US,79,85,37,0.0154
+Aloysius A. J. Hooijman,NL,78,87,15,0.0152
+Arie Gerard Post,NL,78,87,15,0.0152
+Leon Glicenstein,US,77,89,39,0.015
+Michael D. Nelson,US,76,90,40,0.0148
+David G. Clark,US,75,91,41,0.0146
+Martin Glawe,DE,74,92,13,0.0144
+Bruce D. Mowrey,US,73,93,42,0.0142
+Christa Kievit,NL,72,94,17,0.0141
+Steven D. Nelson,US,71,95,43,0.0139
+Woosuk KO,KR,71,95,2,0.0139
+Norman G. Bradford,US,71,95,43,0.0139
+Yasuyuki Murakami,JP,70,98,6,0.0137
+Jon M. Quisenberry,US,70,98,45,0.0137
+Peter Lim,US,70,98,45,0.0137
